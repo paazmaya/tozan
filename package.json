@@ -1,0 +1,39 @@
+{
+  "name": "tozan",
+  "version": "0.1.0",
+  "description": "Index filesystem by creating metadata database, focusing on media files",
+  "homepage": "https://github.com/paazmaya/tozan",
+  "main": "index.js",
+  "bin": "bin/tozan.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)",
+  "engines": {
+    "node": ">=6.9.5"
+  },
+  "files": [
+    "bin",
+    "index.js",
+    "package.json",
+    "LICENSE"
+  ],
+  "keywords": [
+    "image",
+    "picture",
+    "organize"
+  ],
+  "author": {
+    "name": "Juga Paazmaya",
+    "email": "paazmaya@yahoo.com",
+    "url": "https://paazmaya.fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:paazmaya/tozan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paazmaya/tozan/issues"
+  },
+  "license": "MIT"
+}
