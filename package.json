@@ -6,7 +6,9 @@
   "main": "index.js",
   "bin": "bin/tozan.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint index.js bin",
+    "test": "nyc --exclude tests tape tests/*_test.js",
+    "coverage": "nyc --exclude tests report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": "Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)",
   "engines": {
@@ -35,5 +37,16 @@
   "bugs": {
     "url": "https://github.com/paazmaya/tozan/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "optionator": "~0.8.2",
+    "sqlite3": "~3.1.8"
+  },
+  "devDependencies": {
+    "codecov": "^2.2.0",
+    "eslint": "^4.0.0",
+    "eslint-config-paazmaya": "^4.0.0",
+    "nyc": "^11.0.2",
+    "tape": "^4.6.3"
+  }
 }
