@@ -7,7 +7,12 @@
  * Licensed under the MIT license
  */
 
+const fs = require('fs'),
+  path = require('path');
+
 const sqlite3 = require('sqlite3');
+
+const BEGIN_DOT = /^\./;
 
 /**
  * Create and initialise SQLite database and tables, which by default is in memory.
@@ -43,14 +48,56 @@ const createDatabase = (location) => {
 };
 
 /**
+ * List all files under the given directory.
+ *
+ * @param {string} directory  Root directory in which images should be
+ * @param {object} options    Options that are all boolean values and false by default
+ * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
+ *
+ * @returns {Array} List of files
+ */
+const readFiles = (directory, options) => {
+  let items = fs.readdirSync(directory);
+
+  if (options.ignoreDotFiles) {
+    items = items.filter((item) => {
+      return !BEGIN_DOT.test(item);
+    });
+  }
+
+  items = items.map((item) => {
+    return path.join(directory, item);
+  });
+
+  let files = [];
+
+  items.forEach((item) => {
+    const stat = fs.statSync(item);
+    if (stat.isDirectory()) {
+      files = files.concat(readFiles(item, options));
+    }
+    else if (stat.isFile()) {
+      files.push(item);
+    }
+  });
+
+  return files;
+};
+
+/**
  * @param {string} directory  Root directory in which images should be
  * @param {object} options    Options that are all boolean values and false by default
  * @param {boolean} options.verbose Print out which file is being processed
  * @param {boolean} options.dryRun  Do not touch files, just show what would happen
  * @param {string} options.database Possible database file to be used with SQLite
+ * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
  * @returns {void}
  */
 module.exports = function (directory, options) {
   const db = createDatabase(options.database);
+
+  const files = readFiles(directory, options);
+
+  console.dir(files);
 };
