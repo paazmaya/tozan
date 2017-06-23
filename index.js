@@ -15,6 +15,7 @@ const sqlite3 = require('sqlite3'),
 
 const BEGIN_DOT = /^\./;
 const DEFAULT_DATABASE = ':memory:';
+const ITERATION_SIZE = 100;
 
 // https://www.sqlite.org/withoutrowid.html
 const CREATE_TABLE = `
@@ -119,7 +120,7 @@ const findFiles = (directory, options) => {
  * Get the meta data for the given file.
  *
  * @param {string} filepath File path
- * @returns {Number}
+ * @returns {object} Meta data of the given file
  * @see https://nodejs.org/docs/latest-v6.x/api/fs.html#fs_class_fs_stats
  */
 const getMeta = (filepath) => {
@@ -132,7 +133,7 @@ const getMeta = (filepath) => {
     filepath: filepath,
     sha256: sha256,
     filesize: stat.size, // File size in bytes
-    modified: stat.mtime.getTime() // A number representing the milliseconds elapsed between 1 January 1970 00:00:00 UTC and the given date.
+    modified: stat.mtime.getTime() // Milliseconds elapsed since 1 January 1970 00:00:00 UTC
   };
 };
 
@@ -149,13 +150,23 @@ module.exports = function (directory, options) {
   const db = createDatabase(options.database);
 
   const files = findFiles(directory, options);
-  console.dir(files);
 
-  const data = files.map((item) => {
-    return getMeta(item);
-  });
+  // Handle files in chunks of 100.
+  const iterations = Math.ceil(files.length / ITERATION_SIZE);
+  if (options.verbose) {
+    console.log(`Going to do ${iterations} iterations over ${files.length} files`);
+  }
 
-  storeData(data, db);
+  for (let i = 1; i <= iterations; ++i) {
+    const list = files.splice(0, ITERATION_SIZE);
+    if (options.verbose) {
+      console.log(`Iteration ${i} has ${list.length} files`);
+    }
+    const data = list.map((item) => {
+      return getMeta(item);
+    });
+    storeData(data, db);
+  }
 
 };
 
