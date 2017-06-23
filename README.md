@@ -53,6 +53,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v0.1.1` (2017-06-24)
+  - Was missing `README.md` from package and hence from [the npm page](https://www.npmjs.com/package/tozan)
+  - Now prints the file name when verbose, as advertised
 * `v0.1.0` (2017-06-24)
   - Gets the job simply done, hence first release
 

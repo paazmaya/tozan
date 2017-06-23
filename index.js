@@ -160,6 +160,10 @@ const processFiles = (files, options) => {
       console.log(`Iteration ${i} has ${list.length} files`);
     }
     const data = list.map((item) => {
+      if (options.verbose) {
+        console.log(`Reading "${item}"`);
+      }
+
       return getMeta(item);
     });
     storeData(data, db);

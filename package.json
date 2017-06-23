@@ -1,6 +1,6 @@
 {
   "name": "tozan",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "main": "index.js",
@@ -18,7 +18,8 @@
     "bin",
     "index.js",
     "package.json",
-    "LICENSE"
+    "LICENSE",
+    "README.md"
   ],
   "keywords": [
     "files",
