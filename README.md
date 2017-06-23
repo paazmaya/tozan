@@ -3,7 +3,7 @@
 > Index filesystem by creating metadata database
 
 [![Build Status](https://travis-ci.org/paazmaya/tozan.svg?branch=master)](https://travis-ci.org/paazmaya/tozan)
-[![Windows build status](https://ci.appveyor.com/api/projects/status/-/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/master)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/bd4af4tkql7usxwq/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/master)
 [![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 
 Go trough files under the given directory, generate SHA-256 has out of their content, and store the hash to a SQLite database.
