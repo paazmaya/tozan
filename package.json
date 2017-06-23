@@ -40,6 +40,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "hasha": "~3.0.0",
     "optionator": "~0.8.2",
     "sqlite3": "~3.1.8"
   },

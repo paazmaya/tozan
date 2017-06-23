@@ -10,10 +10,23 @@
 const fs = require('fs'),
   path = require('path');
 
-const sqlite3 = require('sqlite3');
+const sqlite3 = require('sqlite3'),
+  hasha = require('hasha');
 
 const BEGIN_DOT = /^\./;
 const DEFAULT_DATABASE = ':memory:';
+
+// https://www.sqlite.org/withoutrowid.html
+const CREATE_TABLE = `
+  CREATE TABLE IF NOT EXISTS files (
+    filepath TEXT PRIMARY KEY,
+    sha256 TEXT,
+    filesize REAL,
+    modified REAL
+  ) WITHOUT ROWID
+`;
+// FIXME: How about duplicate database entries?
+const COLUMNS_IN_TABLE = 4;
 
 /**
  * Create and initialise SQLite database and tables, which by default is in memory.
@@ -32,18 +45,35 @@ const createDatabase = (location) => {
     }
   });
 
-  // Create tables that are needed. Alphaletically ordered keys after primary key and sha256
+  // Create tables that are needed.
   db.serialize(() => {
-    // https://www.sqlite.org/withoutrowid.html
-    db.run(`
-      CREATE TABLE IF NOT EXISTS files (
-        filepath TEXT PRIMARY KEY,
-        sha256 TEXT,
-        filesize REAL,
-        timestamp REAL
-      ) WITHOUT ROWID
-    `);
+    db.run(CREATE_TABLE);
   });
+
+  return db;
+};
+
+
+/**
+ * Generate and store the metadata for all the files in the list
+ *
+ * @param {array} list List of file meta data objects
+ * @param {sqlite3.Database} db Database instance
+ * @returns {sqlite3.Database|boolean} Database instance or false
+ */
+const storeData = (list, db) => {
+  if (!(list instanceof Array) || list.length === 0) {
+    return false;
+  }
+
+  const questions = Array(COLUMNS_IN_TABLE).fill('?').join(', ');
+  const statement = db.prepare(`INSERT INTO files VALUES (${questions})`);
+
+  list.forEach((item) => {
+    const values = Object.keys(item).map((key) => item[key]);
+    statement.run(values);
+  });
+  statement.finalize();
 
   return db;
 };
@@ -57,7 +87,7 @@ const createDatabase = (location) => {
  *
  * @returns {Array} List of files
  */
-const readFiles = (directory, options) => {
+const findFiles = (directory, options) => {
   let items = fs.readdirSync(directory);
 
   if (options.ignoreDotFiles) {
@@ -75,7 +105,7 @@ const readFiles = (directory, options) => {
   items.forEach((item) => {
     const stat = fs.statSync(item);
     if (stat.isDirectory()) {
-      files = files.concat(readFiles(item, options));
+      files = files.concat(findFiles(item, options));
     }
     else if (stat.isFile()) {
       files.push(item);
@@ -83,6 +113,27 @@ const readFiles = (directory, options) => {
   });
 
   return files;
+};
+
+/**
+ * Get the meta data for the given file.
+ *
+ * @param {string} filepath File path
+ * @returns {Number}
+ * @see https://nodejs.org/docs/latest-v6.x/api/fs.html#fs_class_fs_stats
+ */
+const getMeta = (filepath) => {
+  const sha256 = hasha.fromFileSync(filepath, {
+    algorithm: 'sha256'
+  });
+  const stat = fs.statSync(filepath);
+
+  return {
+    filepath: filepath,
+    sha256: sha256,
+    filesize: stat.size, // File size in bytes
+    modified: stat.mtime.getTime() // A number representing the milliseconds elapsed between 1 January 1970 00:00:00 UTC and the given date.
+  };
 };
 
 /**
@@ -97,9 +148,15 @@ const readFiles = (directory, options) => {
 module.exports = function (directory, options) {
   const db = createDatabase(options.database);
 
-  const files = readFiles(directory, options);
-
+  const files = findFiles(directory, options);
   console.dir(files);
+
+  const data = files.map((item) => {
+    return getMeta(item);
+  });
+
+  storeData(data, db);
+
 };
 
 module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;
