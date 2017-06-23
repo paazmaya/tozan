@@ -53,7 +53,7 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v0.1.0` (2017-06)
+* `v0.1.0` (2017-06-24)
   - Gets the job simply done, hence first release
 
 ## License
