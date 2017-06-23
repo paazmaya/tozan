@@ -1,7 +1,7 @@
 /**
  * tozan
  * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database, focusing on media files
+ * Index filesystem by creating metadata database
  *
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  * Licensed under the MIT license
@@ -13,6 +13,7 @@ const fs = require('fs'),
 const sqlite3 = require('sqlite3');
 
 const BEGIN_DOT = /^\./;
+const DEFAULT_DATABASE = ':memory:';
 
 /**
  * Create and initialise SQLite database and tables, which by default is in memory.
@@ -22,7 +23,7 @@ const BEGIN_DOT = /^\./;
  * @see http://sqlite.org/lang_createtable.html
  */
 const createDatabase = (location) => {
-  location = location || ':memory:';
+  location = location || DEFAULT_DATABASE;
   const db = new sqlite3.Database(location, (error) => {
     if (error) {
       console.error('Database opening/creation failed');
@@ -101,3 +102,5 @@ module.exports = function (directory, options) {
 
   console.dir(files);
 };
+
+module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;

@@ -1,6 +1,6 @@
 # tozan
 
-> Index filesystem by creating metadata database, focusing on media files
+> Index filesystem by creating metadata database
 
 [![Build Status](https://travis-ci.org/paazmaya/tozan.svg?branch=master)](https://travis-ci.org/paazmaya/tozan)
 [![Windows build status](https://ci.appveyor.com/api/projects/status/-/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/master)

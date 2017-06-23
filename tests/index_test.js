@@ -1,7 +1,7 @@
 /**
  * tozan
  * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database, focusing on media files
+ * Index filesystem by creating metadata database
  *
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  * Licensed under the MIT license

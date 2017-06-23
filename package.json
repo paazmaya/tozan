@@ -1,7 +1,7 @@
 {
   "name": "tozan",
   "version": "0.1.0",
-  "description": "Index filesystem by creating metadata database, focusing on media files",
+  "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "main": "index.js",
   "bin": "bin/tozan.js",
@@ -21,6 +21,7 @@
     "LICENSE"
   ],
   "keywords": [
+    "files",
     "image",
     "picture",
     "organize"

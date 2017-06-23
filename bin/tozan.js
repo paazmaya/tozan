@@ -3,7 +3,7 @@
 /**
  * tozan
  * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database, focusing on media files
+ * Index filesystem by creating metadata database
  *
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  * Licensed under the MIT license
@@ -58,12 +58,13 @@ const optsParser = optionator({
       option: 'dry-run',
       alias: 'n',
       type: 'Boolean',
-      description: 'Try it out without actually touching anything'
+      description: 'Try it out without storing anything'
     },
     {
       option: 'database',
       alias: 'D',
       type: 'String',
+      default: tozan.DEFAULT_DATABASE,
       description: 'SQLite database to use'
     },
     {
