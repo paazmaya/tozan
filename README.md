@@ -23,6 +23,18 @@ Please note that the minimum supported version of [Node.js](https://nodejs.org/e
 tozan --help
 ```
 
+```sh
+tozan [options] <directory>
+
+  -h, --help              Help and usage instructions
+  -V, --version           Version number
+  -v, --verbose           Verbose output, will print which file is currently being processed
+  -D, --database String   SQLite database to use - default: :memory:
+  -i, --ignore-dot-files  Ignore files and directories that begin with a dot
+
+Version 0.1.0
+```
+
 ## Contributing
 
 First thing to do is to file [an issue](https://github.com/paazmaya/tozan/issues).

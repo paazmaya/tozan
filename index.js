@@ -89,7 +89,6 @@ const readFiles = (directory, options) => {
  * @param {string} directory  Root directory in which images should be
  * @param {object} options    Options that are all boolean values and false by default
  * @param {boolean} options.verbose Print out which file is being processed
- * @param {boolean} options.dryRun  Do not touch files, just show what would happen
  * @param {string} options.database Possible database file to be used with SQLite
  * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *

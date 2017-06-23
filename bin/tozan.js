@@ -55,12 +55,6 @@ const optsParser = optionator({
       description: 'Verbose output, will print which file is currently being processed'
     },
     {
-      option: 'dry-run',
-      alias: 'n',
-      type: 'Boolean',
-      description: 'Try it out without storing anything'
-    },
-    {
       option: 'database',
       alias: 'D',
       type: 'String',
@@ -98,14 +92,17 @@ if (opts.help) {
 }
 
 if (opts._.length !== 1) {
-  console.error('Directory not specified');
+  console.error('Directory was not specified');
   console.log(optsParser.generateHelp());
   process.exit(1);
 }
 
 const directory = path.resolve(opts._[0]);
 
-if (!fs.existsSync(directory)) {
+try {
+  fs.accessSync(directory);
+}
+catch (error) {
   console.error(`Directory (${directory}) does not exist`);
   process.exit(1);
 }
@@ -114,9 +111,6 @@ if (!fs.existsSync(directory)) {
 tozan(directory, {
   verbose: typeof opts.verbose === 'boolean' ?
     opts.verbose :
-    false,
-  dryRun: typeof opts.dryRun === 'boolean' ?
-    opts.dryRun :
     false,
   ignoreDotFiles: typeof opts.ignoreDotFiles === 'boolean' ?
     opts.ignoreDotFiles :
