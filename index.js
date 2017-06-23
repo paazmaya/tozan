@@ -138,18 +138,15 @@ const getMeta = (filepath) => {
 };
 
 /**
- * @param {string} directory  Root directory in which images should be
- * @param {object} options    Options that are all boolean values and false by default
+ * @param {array} files List of file paths
+ * @param {object} options Options that are all boolean values and false by default
  * @param {boolean} options.verbose Print out which file is being processed
  * @param {string} options.database Possible database file to be used with SQLite
- * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
  * @returns {void}
  */
-module.exports = function (directory, options) {
+const processFiles = (files, options) => {
   const db = createDatabase(options.database);
-
-  const files = findFiles(directory, options);
 
   // Handle files in chunks of 100.
   const iterations = Math.ceil(files.length / ITERATION_SIZE);
@@ -168,6 +165,20 @@ module.exports = function (directory, options) {
     storeData(data, db);
   }
 
+};
+
+/**
+ * @param {string} directory  Root directory in which images should be
+ * @param {object} options    Options that are all boolean values and false by default
+ * @param {boolean} options.verbose Print out which file is being processed
+ * @param {string} options.database Possible database file to be used with SQLite
+ * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
+ *
+ * @returns {void}
+ */
+module.exports = function (directory, options) {
+  const files = findFiles(directory, options);
+  processFiles(files, options);
 };
 
 module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;
