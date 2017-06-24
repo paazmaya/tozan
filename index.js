@@ -22,8 +22,8 @@ const CREATE_TABLE = `
   CREATE TABLE IF NOT EXISTS files (
     filepath TEXT PRIMARY KEY ON CONFLICT REPLACE,
     sha256 TEXT,
-    filesize REAL,
-    modified REAL
+    filesize INTEGER,
+    modified INTEGER
   ) WITHOUT ROWID
 `;
 const COLUMNS_IN_TABLE = 4;
