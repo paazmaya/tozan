@@ -52,7 +52,7 @@ const optsParser = optionator({
       option: 'verbose',
       alias: 'v',
       type: 'Boolean',
-      description: 'Verbose output, will print which file is currently being processed'
+      description: 'Verbose output, will print more information of the process'
     },
     {
       option: 'database',

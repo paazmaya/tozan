@@ -11,7 +11,8 @@ const fs = require('fs'),
   path = require('path');
 
 const sqlite3 = require('sqlite3'),
-  hasha = require('hasha');
+  hasha = require('hasha'),
+  Progress = require('progress');
 
 const BEGIN_DOT = /^\./;
 const DEFAULT_DATABASE = ':memory:';
@@ -156,15 +157,17 @@ const processFiles = (files, options) => {
     console.log(`Going to do ${iterations} iterations over ${files.length} files`);
   }
 
+  const bar = new Progress(`Processing ${files.length} files [:bar] :percent`, {
+    total: files.length,
+    complete: '#',
+    incomplete: '-'
+  });
+
   for (let i = 1; i <= iterations; ++i) {
     const list = files.splice(0, ITERATION_SIZE);
-    if (options.verbose) {
-      console.log(`Iteration ${i} has ${list.length} files`);
-    }
     const data = list.map((item) => {
-      if (options.verbose) {
-        console.log(`Reading "${item}"`);
-      }
+      bar.tick();
+      bar.render();
 
       return getMeta(item);
     });
@@ -182,7 +185,7 @@ const processFiles = (files, options) => {
  *
  * @returns {void}
  */
-module.exports = function (directory, options) {
+module.exports = function tozan(directory, options) {
   const files = findFiles(directory, options);
   processFiles(files, options);
 };
