@@ -71,7 +71,7 @@ tape('cli should complain when non existing option used', (test) => {
 tape('cli should require at least one directory', (test) => {
   test.plan(1);
 
-  execFile('node', [pkg.bin, '-v'], null, (err, stdout, stderr) => {
+  execFile('node', [pkg.bin], null, (err, stdout, stderr) => {
     test.equal(stderr.trim(), 'Directory was not specified');
   });
 

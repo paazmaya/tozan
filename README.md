@@ -58,7 +58,7 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v0.2.0` (2017-06-2x)
+* `v0.2.0` (2017-06-24)
   - Update database row if the file meta data was already stored
   - Show progress bar with percentage and file count
   - No more verbose command line option since the progress bar gives enough information
