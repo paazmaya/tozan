@@ -10,7 +10,11 @@
     "test": "nyc --exclude tests tape tests/*_test.js",
     "coverage": "nyc --exclude tests report --reporter=text-lcov > coverage.lcov && codecov"
   },
-  "author": "Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)",
+  "author": {
+    "name": "Juga Paazmaya",
+    "email": "paazmaya@yahoo.com",
+    "url": "https://paazmaya.fi"
+  },
   "engines": {
     "node": ">=6.9.5"
   },
@@ -27,11 +31,6 @@
     "picture",
     "organize"
   ],
-  "author": {
-    "name": "Juga Paazmaya",
-    "email": "paazmaya@yahoo.com",
-    "url": "https://paazmaya.fi"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:paazmaya/tozan.git"

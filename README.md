@@ -7,11 +7,13 @@
 [![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 
 Go trough files under the given directory, generate SHA-256 has out of their content, and store the hash to a SQLite database.
+In case the given file was already listed in the database, its entry will be updated.
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `6.9.5` (LTS).
 
-
 ## Installation
+
+Install via `npm`, as a global command line utility:
 
 ```sh
 [sudo] npm install --global tozan
@@ -19,9 +21,13 @@ Please note that the minimum supported version of [Node.js](https://nodejs.org/e
 
 ## Command line options
 
+Easiest way to see the supported options, is to execute with help output:
+
 ```sh
 tozan --help
 ```
+
+The most recent major version has the similar output to the following:
 
 ```sh
 tozan [options] <directory>
@@ -32,7 +38,7 @@ tozan [options] <directory>
   -D, --database String   SQLite database to use - default: :memory:
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
-Version 0.1.0
+Version 0.2.0
 ```
 
 ## Contributing
@@ -53,6 +59,8 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v0.2.0` (2017-06-2x)
+  - Update database row if the file meta data was already stored
 * `v0.1.1` (2017-06-24)
   - Was missing `README.md` from package and hence from [the npm page](https://www.npmjs.com/package/tozan)
   - Now prints the file name when verbose, as advertised

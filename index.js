@@ -20,14 +20,17 @@ const ITERATION_SIZE = 100;
 // https://www.sqlite.org/withoutrowid.html
 const CREATE_TABLE = `
   CREATE TABLE IF NOT EXISTS files (
-    filepath TEXT PRIMARY KEY,
+    filepath TEXT PRIMARY KEY ON CONFLICT REPLACE,
     sha256 TEXT,
     filesize REAL,
     modified REAL
   ) WITHOUT ROWID
 `;
-// FIXME: How about duplicate database entries?
 const COLUMNS_IN_TABLE = 4;
+
+// Database data insertation query phrase
+const questions = Array(COLUMNS_IN_TABLE).fill('?').join(', ');
+const INSERT_DATA = `INSERT INTO files VALUES (${questions})`;
 
 /**
  * Create and initialise SQLite database and tables, which by default is in memory.
@@ -67,8 +70,7 @@ const storeData = (list, db) => {
     return false;
   }
 
-  const questions = Array(COLUMNS_IN_TABLE).fill('?').join(', ');
-  const statement = db.prepare(`INSERT INTO files VALUES (${questions})`);
+  const statement = db.prepare(INSERT_DATA);
 
   list.forEach((item) => {
     const values = Object.keys(item).map((key) => item[key]);
@@ -148,7 +150,7 @@ const getMeta = (filepath) => {
 const processFiles = (files, options) => {
   const db = createDatabase(options.database);
 
-  // Handle files in chunks of 100.
+  // Handle files in chunks.
   const iterations = Math.ceil(files.length / ITERATION_SIZE);
   if (options.verbose) {
     console.log(`Going to do ${iterations} iterations over ${files.length} files`);
