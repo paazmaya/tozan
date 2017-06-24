@@ -34,7 +34,6 @@ tozan [options] <directory>
 
   -h, --help              Help and usage instructions
   -V, --version           Version number
-  -v, --verbose           Verbose output, will print more information of the process
   -D, --database String   SQLite database to use - default: :memory:
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
@@ -62,6 +61,7 @@ Please make sure it is over 90% at all times.
 * `v0.2.0` (2017-06-2x)
   - Update database row if the file meta data was already stored
   - Show progress bar with percentage and file count
+  - No more verbose command line option since the progress bar gives enough information
 * `v0.1.1` (2017-06-24)
   - Was missing `README.md` from package and hence from [the npm page](https://www.npmjs.com/package/tozan)
   - Now prints the file name when verbose, as advertised

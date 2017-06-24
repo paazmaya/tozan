@@ -49,12 +49,6 @@ const optsParser = optionator({
       example: '-V'
     },
     {
-      option: 'verbose',
-      alias: 'v',
-      type: 'Boolean',
-      description: 'Verbose output, will print more information of the process'
-    },
-    {
       option: 'database',
       alias: 'D',
       type: 'String',
@@ -109,9 +103,6 @@ catch (error) {
 
 // Fire away
 tozan(directory, {
-  verbose: typeof opts.verbose === 'boolean' ?
-    opts.verbose :
-    false,
   ignoreDotFiles: typeof opts.ignoreDotFiles === 'boolean' ?
     opts.ignoreDotFiles :
     false,

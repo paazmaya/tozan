@@ -143,7 +143,6 @@ const getMeta = (filepath) => {
 /**
  * @param {array} files List of file paths
  * @param {object} options Options that are all boolean values and false by default
- * @param {boolean} options.verbose Print out which file is being processed
  * @param {string} options.database Possible database file to be used with SQLite
  *
  * @returns {void}
@@ -153,10 +152,8 @@ const processFiles = (files, options) => {
 
   // Handle files in chunks.
   const iterations = Math.ceil(files.length / ITERATION_SIZE);
-  if (options.verbose) {
-    console.log(`Going to do ${iterations} iterations over ${files.length} files`);
-  }
 
+  // Show command line progress.
   const bar = new Progress(`Processing ${files.length} files [:bar] :percent`, {
     total: files.length,
     complete: '#',
@@ -179,7 +176,6 @@ const processFiles = (files, options) => {
 /**
  * @param {string} directory  Root directory in which images should be
  * @param {object} options    Options that are all boolean values and false by default
- * @param {boolean} options.verbose Print out which file is being processed
  * @param {string} options.database Possible database file to be used with SQLite
  * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
