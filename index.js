@@ -187,3 +187,10 @@ module.exports = function tozan(directory, options) {
 };
 
 module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;
+
+// For unit testing only.
+module.exports._createDatabase = createDatabase;
+module.exports._storeData = storeData;
+module.exports._findFiles = findFiles;
+module.exports._getMeta = getMeta;
+module.exports._processFiles = processFiles;
