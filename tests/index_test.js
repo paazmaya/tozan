@@ -103,6 +103,17 @@ tape('getMeta - interface', (test) => {
   test.equal(tozan._getMeta.length, 1);
 });
 
+tape('getMeta - expected metadata', (test) => {
+  test.plan(3);
+
+  const filepath = path.join(__dirname, '.fixture-file');
+  const meta = tozan._getMeta(filepath);
+
+  test.equal(meta.filepath, filepath);
+  test.equal(meta.filesize, 66);
+  test.equal(meta.sha256, 'e712b28bd056ac4c56a2bff25ef825e53ed2ec4d19e05de3a79060638fd80705');
+});
+
 tape('processFiles - interface', (test) => {
   test.plan(2);
 
