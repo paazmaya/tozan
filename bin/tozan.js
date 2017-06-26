@@ -97,7 +97,7 @@ try {
   fs.accessSync(directory);
 }
 catch (error) {
-  console.error(`Directory (${directory}) does not exist`);
+  console.error(`Directory "${directory}" does not exist`);
   process.exit(1);
 }
 

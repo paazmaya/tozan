@@ -76,3 +76,21 @@ tape('cli should require at least one directory', (test) => {
   });
 
 });
+
+tape('cli realises that directory does not exist', (test) => {
+  test.plan(1);
+
+  execFile('node', [pkg.bin, 'not-here'], null, (err, stdout, stderr) => {
+    test.ok(stderr.indexOf('not-here" does not exis') !== -1);
+  });
+
+});
+
+tape('cli executes when directory exists', (test) => {
+  test.plan(1);
+
+  execFile('node', [pkg.bin, __dirname], null, (err, stdout) => {
+    test.equal(stdout.indexOf('Using "OpenSSL'), 0);
+  });
+
+});
