@@ -19,6 +19,8 @@ Install via `npm`, as a global command line utility:
 [sudo] npm install --global tozan
 ```
 
+The `sha256` hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
+
 ## Command line options
 
 Easiest way to see the supported options, is to execute with help output:
@@ -58,6 +60,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v0.3.0` (2017-06-26)
+  - Drop `hasha` from dependencies and use [OpenSSL](https://www.openssl.org/) directly, but it needs to be in `PATH`
+  - Safe guard against non existing files when getting meta information
 * `v0.2.0` (2017-06-24)
   - Update database row if the file meta data was already stored
   - Show progress bar with percentage and file count

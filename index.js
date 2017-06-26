@@ -8,12 +8,16 @@
  */
 
 const fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  execSync = require('child_process').execSync;
 
 const sqlite3 = require('sqlite3'),
-  hasha = require('hasha'),
   Progress = require('progress');
 
+const OPENSSL_VERSION = 'openssl version';
+const EXEC_OPTIONS = {
+  encoding: 'utf8'
+};
 const BEGIN_DOT = /^\./;
 const DEFAULT_DATABASE = ':memory:';
 const ITERATION_SIZE = 100;
@@ -139,9 +143,9 @@ const getMeta = (filepath) => {
     return false;
   }
 
-  const sha256 = hasha.fromFileSync(filepath, {
-    algorithm: 'sha256'
-  });
+  const command = `openssl dgst -sha256 "${filepath}"`;
+  const output = execSync(command, EXEC_OPTIONS);
+  const sha256 = output.trim().split(' ').pop();
 
   return {
     filepath: filepath,
@@ -191,16 +195,33 @@ const processFiles = (files, options) => {
 };
 
 /**
+ * Checks that OpenSSL is available before getting a list of files and process them.
+ *
  * @param {string} directory  Root directory in which images should be
  * @param {object} options    Options that are all boolean values and false by default
  * @param {string} options.database Possible database file to be used with SQLite
  * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
- * @returns {void}
+ * @returns {boolean} Processed or not
  */
 module.exports = function tozan(directory, options) {
+
+  let version;
+  try {
+    version = execSync(OPENSSL_VERSION, EXEC_OPTIONS);
+  }
+  catch (error) {
+    console.error('Looks like "openssl" is not available, therefore cannot continue.');
+
+    return false;
+  }
+
+  console.log(`Using "${version.trim()}" for SHA-256 hashing`);
+
   const files = findFiles(directory, options);
   processFiles(files, options);
+
+  return true;
 };
 
 module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;
