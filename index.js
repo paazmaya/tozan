@@ -123,14 +123,25 @@ const findFiles = (directory, options) => {
  * Get the meta data for the given file.
  *
  * @param {string} filepath File path
- * @returns {object} Meta data of the given file
+ * @returns {object|boolean} Meta data of the given file or false when it could not
  * @see https://nodejs.org/docs/latest-v6.x/api/fs.html#fs_class_fs_stats
  */
 const getMeta = (filepath) => {
+  let stat;
+
+  try {
+    stat = fs.statSync(filepath);
+  }
+  catch (error) {
+    console.error(`Could not stat a file "${filepath}"`);
+    console.error(error.message);
+
+    return false;
+  }
+
   const sha256 = hasha.fromFileSync(filepath, {
     algorithm: 'sha256'
   });
-  const stat = fs.statSync(filepath);
 
   return {
     filepath: filepath,
@@ -162,12 +173,18 @@ const processFiles = (files, options) => {
 
   for (let i = 1; i <= iterations; ++i) {
     const list = files.splice(0, ITERATION_SIZE);
-    const data = list.map((item) => {
-      bar.tick();
-      bar.render();
+    const data = list
+      .map((item) => {
+        bar.tick();
+        bar.render();
 
-      return getMeta(item);
-    });
+        return getMeta(item);
+      })
+      .filter((item) => {
+        // Take out those items that have returned false from getMeta
+        return item;
+      });
+
     storeData(data, db);
   }
 

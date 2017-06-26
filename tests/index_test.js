@@ -114,6 +114,15 @@ tape('getMeta - expected metadata', (test) => {
   test.equal(meta.sha256, 'e712b28bd056ac4c56a2bff25ef825e53ed2ec4d19e05de3a79060638fd80705');
 });
 
+tape('getMeta - non existing file returns false', (test) => {
+  test.plan(1);
+
+  const filepath = 'not-here';
+  const meta = tozan._getMeta(filepath);
+
+  test.notOk(meta);
+});
+
 tape('processFiles - interface', (test) => {
   test.plan(2);
 
