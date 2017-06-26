@@ -96,6 +96,16 @@ tape('findFiles - finds all test files and a dot file', (test) => {
   test.equal(list.length, 3);
 });
 
+tape('findFiles - finds files under sub folder', (test) => {
+  test.plan(1);
+
+  const options = {
+    ignoreDotFiles: false
+  };
+  const list = tozan._findFiles(path.join(__dirname, '..', '.git'), options);
+  test.ok(list.length > 45);
+});
+
 tape('getMeta - interface', (test) => {
   test.plan(2);
 
