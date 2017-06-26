@@ -82,8 +82,8 @@ tape('findFiles - finds all test files', (test) => {
   const options = {
     ignoreDotFiles: true
   };
-  const list = tozan._findFiles(__dirname, options);
-  test.equal(list.length, 2);
+  const list = tozan._findFiles(path.join(__dirname, 'fixtures'), options);
+  test.equal(list.length, 1);
 });
 
 tape('findFiles - finds all test files and a dot file', (test) => {
@@ -92,8 +92,8 @@ tape('findFiles - finds all test files and a dot file', (test) => {
   const options = {
     ignoreDotFiles: false
   };
-  const list = tozan._findFiles(__dirname, options);
-  test.equal(list.length, 3);
+  const list = tozan._findFiles(path.join(__dirname, 'fixtures'), options);
+  test.equal(list.length, 2);
 });
 
 tape('findFiles - finds files under sub folder', (test) => {
@@ -102,8 +102,8 @@ tape('findFiles - finds files under sub folder', (test) => {
   const options = {
     ignoreDotFiles: false
   };
-  const list = tozan._findFiles(path.join(__dirname, '..', '.git'), options);
-  test.ok(list.length > 45);
+  const list = tozan._findFiles(__dirname, options);
+  test.equal(list.length, 4);
 });
 
 tape('getMeta - interface', (test) => {
@@ -116,7 +116,7 @@ tape('getMeta - interface', (test) => {
 tape('getMeta - expected metadata', (test) => {
   test.plan(3);
 
-  const filepath = path.join(__dirname, '.fixture-file');
+  const filepath = path.join(__dirname, 'fixtures', '.dot-file');
   const meta = tozan._getMeta(filepath);
 
   test.equal(meta.filepath, filepath);
