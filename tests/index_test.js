@@ -139,3 +139,18 @@ tape('processFiles - interface', (test) => {
   test.equal(typeof tozan._processFiles, 'function', 'is a function');
   test.equal(tozan._processFiles.length, 2);
 });
+
+tape('unique - interface', (test) => {
+  test.plan(2);
+
+  test.equal(typeof tozan._unique, 'function', 'is a function');
+  test.equal(tozan._unique.length, 1);
+});
+
+tape('unique - gets rid of a duplicate', (test) => {
+  test.plan(1);
+
+  const input = ['a', 'b', 'b', 'c'];
+  const output = tozan._unique(input);
+  test.deepEqual(output, ['a', 'b', 'c']);
+});

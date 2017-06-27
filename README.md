@@ -42,6 +42,8 @@ tozan [options] <directory>
 Version 0.2.0
 ```
 
+For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/mapbox/node-sqlite3/wiki/API#new-sqlite3databasefilename-mode-callback).
+
 ## Contributing
 
 First thing to do is to file [an issue](https://github.com/paazmaya/tozan/issues).
@@ -60,9 +62,10 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v0.3.0` (2017-06-26)
+* `v0.3.0` (2017-06-27)
   - Drop `hasha` from dependencies and use [OpenSSL](https://www.openssl.org/) directly, but it needs to be in `PATH`
   - Safe guard against non existing files when getting meta information
+  - Remove possible duplicates (due to symbolic linking) from the file list
 * `v0.2.0` (2017-06-24)
   - Update database row if the file meta data was already stored
   - Show progress bar with percentage and file count

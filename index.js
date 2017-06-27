@@ -16,7 +16,8 @@ const sqlite3 = require('sqlite3'),
 
 const OPENSSL_VERSION = 'openssl version';
 const EXEC_OPTIONS = {
-  encoding: 'utf8'
+  encoding: 'utf8',
+  cwd: process.cwd()
 };
 const BEGIN_DOT = /^\./;
 const DEFAULT_DATABASE = ':memory:';
@@ -195,6 +196,25 @@ const processFiles = (files, options) => {
 };
 
 /**
+ * Get rid of duplicates in the list.
+ *
+ * @param {array} list List of things to get only unique ones
+ * @returns {array} Unique items in the list
+ */
+const unique = (list) => {
+  const filtered = [];
+
+  list.forEach((item) => {
+    if (filtered.indexOf(item) === -1) {
+      filtered.push(item);
+    }
+  });
+
+  return filtered;
+};
+
+
+/**
  * Checks that OpenSSL is available before getting a list of files and process them.
  *
  * @param {string} directory  Root directory in which images should be
@@ -211,14 +231,14 @@ module.exports = function tozan(directory, options) {
     version = execSync(OPENSSL_VERSION, EXEC_OPTIONS);
   }
   catch (error) {
-    console.error('Looks like "openssl" is not available, therefore cannot continue.');
+    console.error('Looks like "openssl" is not available, hence cannot continue.');
 
     return false;
   }
 
   console.log(`Using "${version.trim()}" for SHA-256 hashing`);
 
-  const files = findFiles(directory, options);
+  const files = unique(findFiles(directory, options));
   processFiles(files, options);
 
   return true;
@@ -232,3 +252,4 @@ module.exports._storeData = storeData;
 module.exports._findFiles = findFiles;
 module.exports._getMeta = getMeta;
 module.exports._processFiles = processFiles;
+module.exports._unique = unique;
