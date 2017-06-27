@@ -193,6 +193,7 @@ const processFiles = (files, options) => {
     storeData(data, db);
   }
 
+  db.close();
 };
 
 /**
