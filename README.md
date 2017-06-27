@@ -39,7 +39,7 @@ tozan [options] <directory>
   -D, --database String   SQLite database to use - default: :memory:
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
-Version 0.2.0
+Version 1.0.0
 ```
 
 For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/mapbox/node-sqlite3/wiki/API#new-sqlite3databasefilename-mode-callback).
@@ -62,10 +62,11 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v0.3.0` (2017-06-27)
+* `v1.0.0` (2017-06-28)
   - Drop `hasha` from dependencies and use [OpenSSL](https://www.openssl.org/) directly, but it needs to be in `PATH`
   - Safe guard against non existing files when getting meta information
   - Remove possible duplicates (due to symbolic linking) from the file list
+  - Going to first major release as testing coverage is enough
 * `v0.2.0` (2017-06-24)
   - Update database row if the file meta data was already stored
   - Show progress bar with percentage and file count
