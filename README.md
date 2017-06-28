@@ -11,6 +11,10 @@ In case the given file was already listed in the database, its entry will be upd
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `6.9.5` (LTS).
 
+## Background for the name
+
+The name of the project is for honouring the legacy of a certain master from the Ryukyu archipelago who contributed to the martial arts that we today know as **karate** and **ryukyu kobujutsu**.
+
 ## Installation
 
 Install via `npm`, as a global command line utility:
