@@ -66,6 +66,8 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v1.0.1` (2017-08-17)
+  - Update `sqlite3` to version `3.1.9` which is the first to support Node.js v8
 * `v1.0.0` (2017-06-28)
   - Drop `hasha` from dependencies and use [OpenSSL](https://www.openssl.org/) directly, but it needs to be in `PATH`
   - Safe guard against non existing files when getting meta information
