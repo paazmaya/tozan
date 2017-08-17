@@ -9,11 +9,9 @@
 
 'use strict';
 
-const fs = require('fs'),
-  path = require('path');
-
-const tape = require('tape'),
-  tozan = require('../index');
+const path = require('path');
+const tape = require('tape');
+const tozan = require('../index');
 
 tape('a function with two parameters is exported', (test) => {
   test.plan(2);
@@ -27,6 +25,13 @@ tape('createDatabase - interface', (test) => {
 
   test.equal(typeof tozan._createDatabase, 'function', 'is a function');
   test.equal(tozan._createDatabase.length, 1);
+});
+
+tape('createDatabase - uses memory by default', (test) => {
+  test.plan(1);
+
+  const db = tozan._createDatabase();
+  test.equal(db.filename, ':memory:');
 });
 
 tape('storeData - interface', (test) => {
@@ -51,14 +56,14 @@ tape('storeData - calls all database methods once with one file', (test) => {
 
   const list = [''];
   const db = {
-    prepare: function () {
+    prepare: function prepare() {
       test.ok('prepare was called');
 
       return {
-        run: function () {
+        run: function run() {
           test.ok('run was called');
         },
-        finalize: function () {
+        finalize: function finalize() {
           test.ok('finalize was called');
         }
       };
@@ -153,4 +158,19 @@ tape('unique - gets rid of a duplicate', (test) => {
   const input = ['a', 'b', 'b', 'c'];
   const output = tozan._unique(input);
   test.deepEqual(output, ['a', 'b', 'c']);
+});
+
+tape('openSSLVersion - interface', (test) => {
+  test.plan(2);
+
+  test.equal(typeof tozan._openSSLVersion, 'function', 'is a function');
+  test.equal(tozan._openSSLVersion.length, 0);
+});
+
+tape('openSSLVersion - gets version', (test) => {
+  test.plan(1);
+
+  const version = tozan._openSSLVersion();
+
+  test.equal(version.indexOf('OpenSSL'), 0, 'has version string');
 });

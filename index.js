@@ -214,6 +214,25 @@ const unique = (list) => {
   return filtered;
 };
 
+/**
+ * What is the version of OpenSSL binary?
+ * Used for checking its existance.
+ *
+ * @returns {string|boolean} Version or false
+ */
+const openSSLVersion = () => {
+  let version;
+  try {
+    version = execSync(OPENSSL_VERSION, EXEC_OPTIONS);
+  }
+  catch (error) {
+    console.error('Looks like "openssl" is not available, hence cannot continue.');
+
+    return false;
+  }
+
+  return version;
+};
 
 /**
  * Checks that OpenSSL is available before getting a list of files and process them.
@@ -227,13 +246,8 @@ const unique = (list) => {
  */
 module.exports = function tozan(directory, options) {
 
-  let version;
-  try {
-    version = execSync(OPENSSL_VERSION, EXEC_OPTIONS);
-  }
-  catch (error) {
-    console.error('Looks like "openssl" is not available, hence cannot continue.');
-
+  const version = openSSLVersion();
+  if (!version) {
     return false;
   }
 
@@ -254,3 +268,4 @@ module.exports._findFiles = findFiles;
 module.exports._getMeta = getMeta;
 module.exports._processFiles = processFiles;
 module.exports._unique = unique;
+module.exports._openSSLVersion = openSSLVersion;
