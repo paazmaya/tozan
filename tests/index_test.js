@@ -164,13 +164,21 @@ tape('openSSLVersion - interface', (test) => {
   test.plan(2);
 
   test.equal(typeof tozan._openSSLVersion, 'function', 'is a function');
-  test.equal(tozan._openSSLVersion.length, 0);
+  test.equal(tozan._openSSLVersion.length, 1);
 });
 
 tape('openSSLVersion - gets version', (test) => {
   test.plan(1);
 
-  const version = tozan._openSSLVersion();
+  const version = tozan._openSSLVersion(tozan.OPENSSL_VERSION);
 
   test.equal(version.indexOf('OpenSSL'), 0, 'has version string');
+});
+
+tape('openSSLVersion - false when no version', (test) => {
+  test.plan(1);
+
+  const version = tozan._openSSLVersion('nothing-to-be-found-here');
+
+  test.notOk(version, 'has no version');
 });

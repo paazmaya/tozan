@@ -218,12 +218,13 @@ const unique = (list) => {
  * What is the version of OpenSSL binary?
  * Used for checking its existance.
  *
+ * @param {string} command Command for checking version
  * @returns {string|boolean} Version or false
  */
-const openSSLVersion = () => {
+const openSSLVersion = (command) => {
   let version;
   try {
-    version = execSync(OPENSSL_VERSION, EXEC_OPTIONS);
+    version = execSync(command, EXEC_OPTIONS);
   }
   catch (error) {
     console.error('Looks like "openssl" is not available, hence cannot continue.');
@@ -246,7 +247,7 @@ const openSSLVersion = () => {
  */
 module.exports = function tozan(directory, options) {
 
-  const version = openSSLVersion();
+  const version = openSSLVersion(OPENSSL_VERSION);
   if (!version) {
     return false;
   }
@@ -260,6 +261,7 @@ module.exports = function tozan(directory, options) {
 };
 
 module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;
+module.exports.OPENSSL_VERSION = OPENSSL_VERSION;
 
 // For unit testing only.
 module.exports._createDatabase = createDatabase;
