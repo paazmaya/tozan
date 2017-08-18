@@ -42,3 +42,6 @@ node_modules
 # Debugging output
 database-content.json
 *.db
+
+# Not yet npm@5
+package-lock.json
