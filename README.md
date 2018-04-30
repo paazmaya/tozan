@@ -10,7 +10,7 @@
 Go trough files under the given directory, generate SHA-256 has out of their content, and store the hash to a SQLite database.
 In case the given file was already listed in the database, its entry will be updated.
 
-Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `6.9.5`, which is [the Long Term Support (LTS) version](https://github.com/nodejs/LTS#lts-schedule1).
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `8.11.1`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
 
 ## Background for the name
 
