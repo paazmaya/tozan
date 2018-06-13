@@ -82,13 +82,14 @@ tape('findFiles - interface', (test) => {
 });
 
 tape('findFiles - finds all test files', (test) => {
-  test.plan(1);
+  test.plan(2);
 
   const options = {
     ignoreDotFiles: true
   };
   const list = tozan._findFiles(path.join(__dirname, 'fixtures'), options);
-  test.equal(list.length, 1);
+  test.equal(list.length, 2);
+  test.ok(list.indexOf(path.join(__dirname, 'fixtures', '$data.exp')) !== -1);
 });
 
 tape('findFiles - finds all test files and a dot file', (test) => {
@@ -98,7 +99,7 @@ tape('findFiles - finds all test files and a dot file', (test) => {
     ignoreDotFiles: false
   };
   const list = tozan._findFiles(path.join(__dirname, 'fixtures'), options);
-  test.equal(list.length, 2);
+  test.equal(list.length, 3);
 });
 
 tape('findFiles - finds files under sub folder', (test) => {
@@ -108,7 +109,7 @@ tape('findFiles - finds files under sub folder', (test) => {
     ignoreDotFiles: false
   };
   const list = tozan._findFiles(__dirname, options);
-  test.equal(list.length, 4);
+  test.equal(list.length, 5);
 });
 
 tape('getMeta - interface', (test) => {
@@ -172,7 +173,7 @@ tape('openSSLVersion - gets version', (test) => {
 
   const version = tozan._openSSLVersion(tozan.OPENSSL_VERSION);
 
-  test.equal(version.indexOf('OpenSSL'), 0, 'has version string');
+  test.equal(version.search(/(LibreSSL|OpenSSL)/), 0, 'has version string');
 });
 
 tape('openSSLVersion - false when no version', (test) => {

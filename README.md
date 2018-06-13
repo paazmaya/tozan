@@ -67,6 +67,11 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v2.0.0` (2018-06-13)
+  - Better safe guard against existing files which cannot be accessed
+  - Minimum supported and tested Node.js version is now `v8.11.1`. Earlier versions might work, but are not tested
+  - Update `sqlite3` to version `4.0.0`, among other minor dependency updates :tophat:
+  - Started using `fossa.io` to check dependency licenses
 * `v1.0.1` (2017-08-17)
   - Update `sqlite3` to version `3.1.9` which is the first to support Node.js v8
 * `v1.0.0` (2017-06-28)
@@ -89,6 +94,5 @@ Please make sure it is over 90% at all times.
 Licensed under [the MIT license](LICENSE).
 
 Copyright (c) [Juga Paazmaya](https://paazmaya.fi) <paazmaya@yahoo.com>
-
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_large)

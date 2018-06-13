@@ -90,7 +90,7 @@ tape('cli executes when directory exists', (test) => {
   test.plan(1);
 
   execFile('node', [pkg.bin, __dirname], null, (err, stdout) => {
-    test.equal(stdout.indexOf('Using "OpenSSL'), 0);
+    test.equal(stdout.search(/Using \"(LibreSSL|OpenSSL)/g), 0);
   });
 
 });

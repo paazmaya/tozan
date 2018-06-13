@@ -34,7 +34,7 @@ const CREATE_TABLE = `
 `;
 const COLUMNS_IN_TABLE = 4;
 
-// Database data insertation query phrase
+// Database data insertation query phrase with placeholders
 const questions = Array(COLUMNS_IN_TABLE).fill('?').join(', ');
 const INSERT_DATA = `INSERT INTO files VALUES (${questions})`;
 
@@ -62,7 +62,6 @@ const createDatabase = (location) => {
 
   return db;
 };
-
 
 /**
  * Generate and store the metadata for all the files in the list
@@ -107,6 +106,17 @@ const findFiles = (directory, options) => {
 
   items = items.map((item) => {
     return path.join(directory, item);
+  }).filter((item) => {
+    try {
+      fs.accessSync(item);
+
+      return true;
+    }
+    catch (error) {
+      console.error(`File "${item}" could not be accessed`);
+
+      return false;
+    }
   });
 
   let files = [];
@@ -138,7 +148,7 @@ const getMeta = (filepath) => {
     stat = fs.statSync(filepath);
   }
   catch (error) {
-    console.error(`Could not stat a file "${filepath}"`);
+    console.error(`Could not access the file "${filepath}"`);
     console.error(error.message);
 
     return false;
