@@ -14,7 +14,7 @@ Please note that the minimum supported version of [Node.js](https://nodejs.org/e
 
 ## Background for the name
 
-The name of the project is for honouring the legacy of a certain master from the Ryukyu archipelago who contributed to the martial arts that we today know as **karate** and **ryukyu kobujutsu**.
+The name of the project (Tozan, 当山) is for honouring the legacy of a certain master from the Ryukyu archipelago who contributed to the martial arts that we today know as **karate** and **ryukyu kobujutsu**.
 
 ## Installation
 
