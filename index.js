@@ -11,7 +11,7 @@ const fs = require('fs'),
   path = require('path'),
   execSync = require('child_process').execSync;
 
-const sqlite3 = require('sqlite3'),
+const Better3 = require('better-sqlite3'),
   Progress = require('progress');
 
 const OPENSSL_VERSION = 'openssl version';
@@ -47,18 +47,20 @@ const INSERT_DATA = `INSERT INTO files VALUES (${questions})`;
  */
 const createDatabase = (location) => {
   location = location || DEFAULT_DATABASE;
-  const db = new sqlite3.Database(location, (error) => {
-    if (error) {
-      console.error('Database opening/creation failed');
-      console.error(error);
-      process.exit(1);
-    }
-  });
+
+  const opts = {
+    memory: false
+  };
+
+  if (location === DEFAULT_DATABASE) {
+    location = 'in-memory';
+    opts.memory = true;
+  }
+
+  const db = new Better3(location, opts);
 
   // Create tables that are needed.
-  db.serialize(() => {
-    db.run(CREATE_TABLE);
-  });
+  db.exec(CREATE_TABLE);
 
   return db;
 };
@@ -81,7 +83,6 @@ const storeData = (list, db) => {
     const values = Object.keys(item).map((key) => item[key]);
     statement.run(values);
   });
-  statement.finalize();
 
   return db;
 };
