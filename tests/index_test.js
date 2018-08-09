@@ -31,7 +31,7 @@ tape('createDatabase - uses memory by default', (test) => {
   test.plan(1);
 
   const db = tozan._createDatabase();
-  test.equal(db.filename, ':memory:');
+  test.ok(db.memory);
 });
 
 tape('storeData - interface', (test) => {
@@ -52,7 +52,7 @@ tape('storeData - empty list not processed', (test) => {
 });
 
 tape('storeData - calls all database methods once with one file', (test) => {
-  test.plan(4);
+  test.plan(3);
 
   const list = [''];
   const db = {
@@ -62,9 +62,6 @@ tape('storeData - calls all database methods once with one file', (test) => {
       return {
         run: function run() {
           test.ok('run was called');
-        },
-        finalize: function finalize() {
-          test.ok('finalize was called');
         }
       };
     }
