@@ -67,6 +67,8 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v2.1.0` (2018-08-09)
+  - Switched from using `node-sqlite3` to `better-sqlite3` #9
 * `v2.0.0` (2018-06-13)
   - Better safe guard against existing files which cannot be accessed
   - Minimum supported and tested Node.js version is now `v8.11.1`. Earlier versions might work, but are not tested
