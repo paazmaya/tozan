@@ -25,7 +25,17 @@ Install via `npm`, as a global command line utility:
 [sudo] npm install --global tozan
 ```
 
+Please note that while in Linux and with `sudo`, some of the dependencies might fail to install,
+which can be fixed in some case by `sudo npm install --global --unsafe-perm image-duplicate-remover`.
+See more details at [docs.npmjs.com](https://docs.npmjs.com/misc/config#unsafe-perm).
+
 The `sha256` hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
+
+The existence of OpenSSL can be checked with the command `openssl version`, which should output something similar to:
+
+```sh
+LibreSSL 2.2.7
+```
 
 ## Command line options
 
@@ -48,7 +58,7 @@ tozan [options] <directory>
 Version 1.0.0
 ```
 
-For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/mapbox/node-sqlite3/wiki/API#new-sqlite3databasefilename-mode-callback).
+For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/JoshuaWise/better-sqlite3/wiki/API#new-databasepath-options).
 
 ## Contributing
 
