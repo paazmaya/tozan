@@ -19,7 +19,7 @@ const EXEC_OPTIONS = {
   encoding: 'utf8',
   cwd: process.cwd()
 };
-const BEGIN_DOT = /^\./;
+const BEGIN_DOT = /^\./u;
 const DEFAULT_DATABASE = ':memory:';
 const ITERATION_SIZE = 100;
 
