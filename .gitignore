@@ -44,5 +44,5 @@ database-content.json
 *.db
 
 # Not yet npm@5
-package-lock.json
-package-lock.json
+
+
