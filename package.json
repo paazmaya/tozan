@@ -1,6 +1,6 @@
 {
   "name": "tozan",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "main": "index.js",
@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "codecov": "^3.1.0",
-    "eslint": "^5.8.0",
-    "eslint-config-paazmaya": "^5.0.0",
+    "eslint": "^5.9.0",
+    "eslint-config-paazmaya": "^5.1.0",
     "nyc": "^13.1.0",
     "tape": "^4.9.1"
   }

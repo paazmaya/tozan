@@ -10,7 +10,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![Dependencies Status](https://david-dm.org/paazmaya/tozan/status.svg)](https://david-dm.org/paazmaya/tozan)
 
-Go trough files under the given directory, generate SHA-256 has out of their content, and store the hash to a SQLite database.
+Go trough files under the given directory, generate SHA-256 (default), SHA-384, or SHA-512 has out of their content, and store the hash to a SQLite database.
 In case the given file was already listed in the database, its entry will be updated.
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `8.11.1`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
@@ -31,12 +31,12 @@ Please note that while in Linux and with `sudo`, some of the dependencies might 
 which can be fixed in some case by `sudo npm install --global --unsafe-perm image-duplicate-remover`.
 See more details at [docs.npmjs.com](https://docs.npmjs.com/misc/config#unsafe-perm).
 
-The `sha256` hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
+The `sha` hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
 
-The existence of OpenSSL can be checked with the command `openssl version`, which should output something similar to:
+The existence of OpenSSL can be checked with the command `openssl version`, which should output something similar to (example in macOS):
 
 ```sh
-LibreSSL 2.2.7
+LibreSSL 2.6.4
 ```
 
 ## Command line options
@@ -55,9 +55,11 @@ tozan [options] <directory>
   -h, --help              Help and usage instructions
   -V, --version           Version number
   -D, --database String   SQLite database to use - default: :memory:
+  -H, --hash String       SHA hashing bit depth - either: 256, 384, or 512 -
+                          default: 256
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
-Version 1.0.0
+Version 3.0.0
 ```
 
 For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/JoshuaWise/better-sqlite3/wiki/API#new-databasepath-options).
@@ -80,8 +82,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v2.2.0` (2018-11)
+* `v3.0.0` (2018-11)
   - Use [`npm-shrinkwrap.json`](https://docs.npmjs.com/files/shrinkwrap.json) for locking the working set of 3rd party dependencies
+  - Allow choosing with [SHA hashing function](https://en.wikipedia.org/wiki/SHA-2) to use, one of `256`, `384`, or `512`. Defaults to `256` making it backward compatible, expect for the database column name, `sha256` renamed to `hash`
 * `v2.1.0` (2018-08-09)
   - Switched from using `node-sqlite3` to `better-sqlite3` #9
 * `v2.0.0` (2018-06-13)

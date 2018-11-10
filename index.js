@@ -21,13 +21,15 @@ const EXEC_OPTIONS = {
 };
 const BEGIN_DOT = /^\./u;
 const DEFAULT_DATABASE = ':memory:';
+const DEFAULT_SHA = '256';
+const ALLOWED_SHA = ['256', '384', '512'];
 const ITERATION_SIZE = 100;
 
 // https://www.sqlite.org/withoutrowid.html
 const CREATE_TABLE = `
   CREATE TABLE IF NOT EXISTS files (
     filepath TEXT PRIMARY KEY ON CONFLICT REPLACE,
-    sha256 TEXT,
+    hash TEXT,
     filesize INTEGER,
     modified INTEGER
   ) WITHOUT ROWID
@@ -138,11 +140,12 @@ const findFiles = (directory, options) => {
 /**
  * Get the meta data for the given file.
  *
- * @param {string} filepath File path
+ * @param {string} filepath  File path
+ * @param {string} hash      SHA bit depth to use
  * @returns {object|boolean} Meta data of the given file or false when it could not
  * @see https://nodejs.org/docs/latest-v6.x/api/fs.html#fs_class_fs_stats
  */
-const getMeta = (filepath) => {
+const getMeta = (filepath, hash) => {
   let stat;
 
   try {
@@ -155,13 +158,13 @@ const getMeta = (filepath) => {
     return false;
   }
 
-  const command = `openssl dgst -sha256 "${filepath}"`;
+  const command = `openssl dgst -sha${hash} "${filepath}"`;
   const output = execSync(command, EXEC_OPTIONS);
-  const sha256 = output.trim().split(' ').pop();
+  const sha = output.trim().split(' ').pop();
 
   return {
     filepath: filepath,
-    sha256: sha256,
+    hash: sha,
     filesize: stat.size, // File size in bytes
     modified: stat.mtime.getTime() // Milliseconds elapsed since 1 January 1970 00:00:00 UTC
   };
@@ -171,6 +174,7 @@ const getMeta = (filepath) => {
  * @param {array} files List of file paths
  * @param {object} options Options that are all boolean values and false by default
  * @param {string} options.database Possible database file to be used with SQLite
+ * @param {string} options.hash SHA bit depth to use
  *
  * @returns {void}
  */
@@ -194,7 +198,7 @@ const processFiles = (files, options) => {
         bar.tick();
         bar.render();
 
-        return getMeta(item);
+        return getMeta(item, options.hash);
       })
       .filter((item) => {
         // Take out those items that have returned false from getMeta
@@ -252,6 +256,7 @@ const openSSLVersion = (command) => {
  * @param {string} directory  Root directory in which images should be
  * @param {object} options    Options that are all boolean values and false by default
  * @param {string} options.database Possible database file to be used with SQLite
+ * @param {string} options.hash SHA bit depth to use
  * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
  * @returns {boolean} Processed or not
@@ -263,7 +268,11 @@ module.exports = function tozan(directory, options) {
     return false;
   }
 
-  console.log(`Using "${version.trim()}" for SHA-256 hashing`);
+  if (ALLOWED_SHA.indexOf(options.hash) === -1) {
+    return false;
+  }
+
+  console.log(`Using "${version.trim()}" for SHA-${options.hash} hashing`);
 
   const files = unique(findFiles(directory, options));
   processFiles(files, options);
@@ -272,6 +281,8 @@ module.exports = function tozan(directory, options) {
 };
 
 module.exports.DEFAULT_DATABASE = DEFAULT_DATABASE;
+module.exports.DEFAULT_SHA = DEFAULT_SHA;
+module.exports.ALLOWED_SHA = ALLOWED_SHA;
 module.exports.OPENSSL_VERSION = OPENSSL_VERSION;
 
 // For unit testing only.

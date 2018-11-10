@@ -56,6 +56,14 @@ const optsParser = optionator({
       description: 'SQLite database to use'
     },
     {
+      option: 'hash',
+      alias: 'H',
+      type: 'String',
+      default: tozan.DEFAULT_SHA,
+      enum: tozan.ALLOWED_SHA,
+      description: 'SHA hashing bit depth'
+    },
+    {
       option: 'ignore-dot-files',
       alias: 'i',
       type: 'Boolean',
@@ -106,6 +114,9 @@ tozan(directory, {
   ignoreDotFiles: typeof opts.ignoreDotFiles === 'boolean' ?
     opts.ignoreDotFiles :
     false,
+  hash: typeof opts.hash === 'string' ?
+    opts.hash :
+    null,
   database: typeof opts.database === 'string' ?
     opts.database :
     null

@@ -20,6 +20,16 @@ tape('a function with two parameters is exported', (test) => {
   test.equal(tozan.length, 2, 'has two parameters');
 });
 
+tape('index - wrong hash option blocks usage', (test) => {
+  test.plan(1);
+
+  const output = tozan('.', {
+    hash: 128
+  });
+
+  test.notOk(output);
+});
+
 tape('createDatabase - interface', (test) => {
   test.plan(2);
 
@@ -113,25 +123,36 @@ tape('getMeta - interface', (test) => {
   test.plan(2);
 
   test.equal(typeof tozan._getMeta, 'function', 'is a function');
-  test.equal(tozan._getMeta.length, 1);
+  test.equal(tozan._getMeta.length, 2);
 });
 
-tape('getMeta - expected metadata', (test) => {
+tape('getMeta - expected metadata default', (test) => {
   test.plan(3);
 
   const filepath = path.join(__dirname, 'fixtures', '.dot-file');
-  const meta = tozan._getMeta(filepath);
+  const meta = tozan._getMeta(filepath, tozan.DEFAULT_SHA);
 
   test.equal(meta.filepath, filepath);
   test.equal(meta.filesize, 66);
-  test.equal(meta.sha256, 'e712b28bd056ac4c56a2bff25ef825e53ed2ec4d19e05de3a79060638fd80705');
+  test.equal(meta.hash, 'e712b28bd056ac4c56a2bff25ef825e53ed2ec4d19e05de3a79060638fd80705');
+});
+
+tape('getMeta - expected metadata 512', (test) => {
+  test.plan(3);
+
+  const filepath = path.join(__dirname, 'fixtures', '.dot-file');
+  const meta = tozan._getMeta(filepath, '512');
+
+  test.equal(meta.filepath, filepath);
+  test.equal(meta.filesize, 66);
+  test.equal(meta.hash, 'a8d21a919747f756be879f109cdc61f3d177d54abc548af122c42153fd51dc520d7e9105e1bea79aecdae978aa4dda0e799bf67f630f96ced2318fcdfa700bbf');
 });
 
 tape('getMeta - non existing file returns false', (test) => {
   test.plan(1);
 
   const filepath = 'not-here';
-  const meta = tozan._getMeta(filepath);
+  const meta = tozan._getMeta(filepath, tozan.DEFAULT_SHA);
 
   test.notOk(meta);
 });
@@ -170,7 +191,7 @@ tape('openSSLVersion - gets version', (test) => {
 
   const version = tozan._openSSLVersion(tozan.OPENSSL_VERSION);
 
-  test.equal(version.search(/(LibreSSL|OpenSSL)/), 0, 'has version string');
+  test.equal(version.search(/(LibreSSL|OpenSSL)/u), 0, 'has version string');
 });
 
 tape('openSSLVersion - false when no version', (test) => {
