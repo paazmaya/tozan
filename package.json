@@ -16,12 +16,14 @@
     "url": "https://paazmaya.fi"
   },
   "engines": {
-    "node": ">=8.11.1"
+    "node": ">=8.11.1",
+    "npm": ">=5.0.0"
   },
   "files": [
     "bin",
     "index.js",
     "package.json",
+    "npm-shrinkwrap.json",
     "LICENSE",
     "README.md"
   ],

@@ -80,6 +80,8 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v2.2.0` (2018-11)
+  - Use [`npm-shrinkwrap.json`](https://docs.npmjs.com/files/shrinkwrap.json) for locking the working set of 3rd party dependencies
 * `v2.1.0` (2018-08-09)
   - Switched from using `node-sqlite3` to `better-sqlite3` #9
 * `v2.0.0` (2018-06-13)
