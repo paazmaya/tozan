@@ -84,7 +84,8 @@ Please make sure it is over 90% at all times.
 
 * `v3.0.0` (2018-11)
   - Use [`npm-shrinkwrap.json`](https://docs.npmjs.com/files/shrinkwrap.json) for locking the working set of 3rd party dependencies
-  - Allow choosing with [SHA hashing function](https://en.wikipedia.org/wiki/SHA-2) to use, one of `256`, `384`, or `512`. Defaults to `256` making it backward compatible, expect for the database column name, `sha256` renamed to `hash`
+  - Allow choosing with [SHA hashing function](https://en.wikipedia.org/wiki/SHA-2) to use, one of `256`, `384`, or `512`. Defaults to `256` making it backward compatible
+  - Database table column `sha256` is automatically renamed to `hash`
 * `v2.1.0` (2018-08-09)
   - Switched from using `node-sqlite3` to `better-sqlite3` #9
 * `v2.0.0` (2018-06-13)

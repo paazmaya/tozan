@@ -41,6 +41,23 @@ const questions = Array(COLUMNS_IN_TABLE).fill('?').join(', ');
 const INSERT_DATA = `INSERT INTO files VALUES (${questions})`;
 
 /**
+ * Migrate pre 3.0.0 database table, by first checking if it is needed.
+ *
+ * @param {sqlite3.Database} db Database instance
+ * @returns {void}
+ * @see https://www.sqlite.org/lang_altertable.html
+ */
+const migrateDatabase = (db) => {
+  // https://www.sqlite.org/pragma.html#pragma_table_info
+  const info = db.pragma('table_info(files)');
+
+  const isLegacy = info.some((item) => item.name === 'sha256');
+  if (isLegacy) {
+    db.exec('ALTER TABLE files RENAME COLUMN sha256 TO hash');
+  }
+};
+
+/**
  * Create and initialise SQLite database and tables, which by default is in memory.
  *
  * @param  {string} location Where shall the database be stored, defauts to ':memory:'
@@ -60,6 +77,9 @@ const createDatabase = (location) => {
   }
 
   const db = new Better3(location, opts);
+
+  // See if there is the table already with older column name
+  migrateDatabase(db);
 
   // Create tables that are needed.
   db.exec(CREATE_TABLE);
