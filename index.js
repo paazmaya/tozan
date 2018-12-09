@@ -110,6 +110,25 @@ const storeData = (list, db) => {
 };
 
 /**
+ * Is the given file accessible?
+ *
+ * @param  {string} item File path which is being evaluated
+ * @return {boolean} True when file can be accessed
+ */
+const canAccessFile = (item) => {
+  try {
+    fs.accessSync(item);
+
+    return true;
+  }
+  catch (error) {
+    console.error(`File "${item}" could not be accessed`);
+
+    return false;
+  }
+};
+
+/**
  * List all files under the given directory.
  *
  * @param {string} directory  Root directory in which images should be
@@ -119,7 +138,8 @@ const storeData = (list, db) => {
  * @returns {Array} List of files
  */
 const findFiles = (directory, options) => {
-  let items = fs.readdirSync(directory);
+  let items = fs.readdirSync(directory),
+    files = [];
 
   if (options.ignoreDotFiles) {
     items = items.filter((item) => {
@@ -129,20 +149,7 @@ const findFiles = (directory, options) => {
 
   items = items.map((item) => {
     return path.join(directory, item);
-  }).filter((item) => {
-    try {
-      fs.accessSync(item);
-
-      return true;
-    }
-    catch (error) {
-      console.error(`File "${item}" could not be accessed`);
-
-      return false;
-    }
-  });
-
-  let files = [];
+  }).filter((item) => canAccessFile(item));
 
   items.forEach((item) => {
     const stat = fs.statSync(item);

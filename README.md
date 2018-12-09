@@ -17,7 +17,7 @@ Please note that the minimum supported version of [Node.js](https://nodejs.org/e
 
 ## Background for the name
 
-The name of the project (Tozan, 当山) is for honouring the legacy of a certain master from the Ryukyu archipelago who contributed to the martial arts that we today know as **karate** and **ryukyu kobujutsu**.
+The name of the project (Tozan, 当山) is for honouring the legacy of a certain master from the Ryukyu archipelago, Japan, who contributed to the martial arts that we today know as **karate** and **ryukyu kobujutsu**.
 
 ## Installation
 
@@ -82,7 +82,7 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v3.0.0` (2018-11)
+* `v3.0.0` (2018-12-09)
   - Use [`npm-shrinkwrap.json`](https://docs.npmjs.com/files/shrinkwrap.json) for locking the working set of 3rd party dependencies
   - Allow choosing with [SHA hashing function](https://en.wikipedia.org/wiki/SHA-2) to use, one of `256`, `384`, or `512`. Defaults to `256` making it backward compatible
   - Database table column `sha256` is automatically renamed to `hash`
