@@ -9,7 +9,9 @@
 
 const fs = require('fs'),
   path = require('path'),
-  execSync = require('child_process').execSync;
+  {
+    execSync
+  } = require('child_process');
 
 const Better3 = require('better-sqlite3'),
   Progress = require('progress');
