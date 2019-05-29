@@ -82,6 +82,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v3.1.0` (2019-05-29)
+  - TypeScript types added
+  - Dependencies up to date once again, now using `renovate` to help in that
 * `v3.0.0` (2018-12-09)
   - Use [`npm-shrinkwrap.json`](https://docs.npmjs.com/files/shrinkwrap.json) for locking the working set of 3rd party dependencies
   - Allow choosing with [SHA hashing function](https://en.wikipedia.org/wiki/SHA-2) to use, one of `256`, `384`, or `512`. Defaults to `256` making it backward compatible
