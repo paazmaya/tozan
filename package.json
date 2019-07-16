@@ -8,7 +8,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint": "eslint index.js bin",
-    "test": "nyc --all --exclude tests tape tests/*_test.js",
+    "test": "nyc --all --exclude tests tape tests/*_test.js tests/lib/*_test.js",
     "coverage": "nyc --all --exclude tests report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": {

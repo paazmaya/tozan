@@ -8,163 +8,27 @@
  */
 
 const fs = require('fs'),
-  path = require('path'),
   {
     execSync
   } = require('child_process');
 
-const Better3 = require('better-sqlite3'),
-  Progress = require('progress');
+const Progress = require('progress');
+
+const createDatabase = require('./lib/create-database');
+const storeData = require('./lib/store-data');
+const findFiles = require('./lib/find-files');
+
 
 const OPENSSL_VERSION = 'openssl version';
 const EXEC_OPTIONS = {
   encoding: 'utf8',
   cwd: process.cwd()
 };
-const BEGIN_DOT = /^\./u;
 const DEFAULT_DATABASE = ':memory:';
 const DEFAULT_SHA = '256';
 const ALLOWED_SHA = ['256', '384', '512'];
 const ITERATION_SIZE = 100;
 
-// https://www.sqlite.org/withoutrowid.html
-const CREATE_TABLE = `
-  CREATE TABLE IF NOT EXISTS files (
-    filepath TEXT PRIMARY KEY ON CONFLICT REPLACE,
-    hash TEXT,
-    filesize INTEGER,
-    modified INTEGER
-  ) WITHOUT ROWID
-`;
-const COLUMNS_IN_TABLE = 4;
-
-// Database data insertation query phrase with placeholders
-const questions = Array(COLUMNS_IN_TABLE).fill('?').join(', ');
-const INSERT_DATA = `INSERT INTO files VALUES (${questions})`;
-
-/**
- * Migrate pre 3.0.0 database table, by first checking if it is needed.
- *
- * @param {sqlite3.Database} db Database instance
- * @returns {void}
- * @see https://www.sqlite.org/lang_altertable.html
- */
-const migrateDatabase = (db) => {
-  // https://www.sqlite.org/pragma.html#pragma_table_info
-  const info = db.pragma('table_info(files)');
-
-  const isLegacy = info.some((item) => item.name === 'sha256');
-  if (isLegacy) {
-    db.exec('ALTER TABLE files RENAME COLUMN sha256 TO hash');
-  }
-};
-
-/**
- * Create and initialise SQLite database and tables, which by default is in memory.
- *
- * @param  {string} location Where shall the database be stored, defauts to ':memory:'
- * @returns {sqlite3.Database} Database instance
- * @see http://sqlite.org/lang_createtable.html
- */
-const createDatabase = (location) => {
-  location = location || DEFAULT_DATABASE;
-
-  const opts = {
-    memory: false
-  };
-
-  if (location === DEFAULT_DATABASE) {
-    location = 'in-memory';
-    opts.memory = true;
-  }
-
-  const db = new Better3(location, opts);
-
-  // See if there is the table already with older column name
-  migrateDatabase(db);
-
-  // Create tables that are needed.
-  db.exec(CREATE_TABLE);
-
-  return db;
-};
-
-/**
- * Generate and store the metadata for all the files in the list
- *
- * @param {array} list List of file meta data objects
- * @param {sqlite3.Database} db Database instance
- * @returns {sqlite3.Database|boolean} Database instance or false
- */
-const storeData = (list, db) => {
-  if (!(list instanceof Array) || list.length === 0) {
-    return false;
-  }
-
-  const statement = db.prepare(INSERT_DATA);
-
-  list.forEach((item) => {
-    const values = Object.keys(item).map((key) => item[key]);
-    statement.run(values);
-  });
-
-  return db;
-};
-
-/**
- * Is the given file accessible?
- *
- * @param  {string} item File path which is being evaluated
- * @return {boolean} True when file can be accessed
- */
-const canAccessFile = (item) => {
-  try {
-    fs.accessSync(item);
-
-    return true;
-  }
-  catch (error) {
-    console.error(`File "${item}" could not be accessed`);
-
-    return false;
-  }
-};
-
-/**
- * List all files under the given directory.
- *
- * @param {string} directory  Root directory in which images should be
- * @param {object} options    Options that are all boolean values and false by default
- * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
- *
- * @returns {Array} List of files
- */
-const findFiles = (directory, options) => {
-  let items = fs.readdirSync(directory),
-    files = [];
-
-  if (options.ignoreDotFiles) {
-    items = items.filter((item) => {
-      return !BEGIN_DOT.test(item);
-    });
-  }
-
-  items = items.map((item) => {
-    return path.join(directory, item);
-  }).filter((item) => canAccessFile(item));
-
-  items.forEach((item) => {
-    const stat = fs.statSync(item);
-    if (stat.isDirectory()) {
-      files = files.concat(findFiles(item, options));
-    }
-    else if (stat.isFile()) {
-      files.push(item);
-    }
-  });
-
-  return files;
-};
 
 /**
  * Get the meta data for the given file.
@@ -315,9 +179,7 @@ module.exports.ALLOWED_SHA = ALLOWED_SHA;
 module.exports.OPENSSL_VERSION = OPENSSL_VERSION;
 
 // For unit testing only.
-module.exports._createDatabase = createDatabase;
 module.exports._storeData = storeData;
-module.exports._findFiles = findFiles;
 module.exports._getMeta = getMeta;
 module.exports._processFiles = processFiles;
 module.exports._unique = unique;

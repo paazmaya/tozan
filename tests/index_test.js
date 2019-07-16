@@ -30,20 +30,6 @@ tape('index - wrong hash option blocks usage', (test) => {
   test.notOk(output);
 });
 
-tape('createDatabase - interface', (test) => {
-  test.plan(2);
-
-  test.equal(typeof tozan._createDatabase, 'function', 'is a function');
-  test.equal(tozan._createDatabase.length, 1);
-});
-
-tape('createDatabase - uses memory by default', (test) => {
-  test.plan(1);
-
-  const db = tozan._createDatabase();
-  test.ok(db.memory);
-});
-
 tape('storeData - interface', (test) => {
   test.plan(2);
 
@@ -79,44 +65,6 @@ tape('storeData - calls all database methods once with one file', (test) => {
 
   const output = tozan._storeData(list, db);
   test.equal(output, db, 'The same db instance returned');
-});
-
-tape('findFiles - interface', (test) => {
-  test.plan(2);
-
-  test.equal(typeof tozan._findFiles, 'function', 'is a function');
-  test.equal(tozan._findFiles.length, 2);
-});
-
-tape('findFiles - finds all test files', (test) => {
-  test.plan(2);
-
-  const options = {
-    ignoreDotFiles: true
-  };
-  const list = tozan._findFiles(path.join(__dirname, 'fixtures'), options);
-  test.equal(list.length, 2);
-  test.ok(list.indexOf(path.join(__dirname, 'fixtures', '$data.exp')) !== -1);
-});
-
-tape('findFiles - finds all test files and a dot file', (test) => {
-  test.plan(1);
-
-  const options = {
-    ignoreDotFiles: false
-  };
-  const list = tozan._findFiles(path.join(__dirname, 'fixtures'), options);
-  test.equal(list.length, 3);
-});
-
-tape('findFiles - finds files under sub folder', (test) => {
-  test.plan(1);
-
-  const options = {
-    ignoreDotFiles: false
-  };
-  const list = tozan._findFiles(__dirname, options);
-  test.equal(list.length, 5);
 });
 
 tape('getMeta - interface', (test) => {
