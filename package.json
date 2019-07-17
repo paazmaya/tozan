@@ -7,7 +7,7 @@
   "bin": "bin/tozan.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "eslint index.js bin",
+    "lint": "eslint index.js bin lib",
     "test": "nyc --all --exclude tests tape tests/*_test.js tests/lib/*_test.js",
     "coverage": "nyc --all --exclude tests report --reporter=text-lcov > coverage.lcov && codecov"
   },
@@ -22,6 +22,7 @@
   },
   "files": [
     "bin",
+    "lib",
     "index.js",
     "package.json",
     "npm-shrinkwrap.json",

@@ -17,6 +17,7 @@ const fs = require('fs'),
 const optionator = require('optionator');
 
 const tozan = require('../index');
+const constants = require('../lib/constants');
 
 let pkg;
 
@@ -52,15 +53,15 @@ const optsParser = optionator({
       option: 'database',
       alias: 'D',
       type: 'String',
-      default: tozan.DEFAULT_DATABASE,
+      default: constants.DEFAULT_DATABASE,
       description: 'SQLite database to use'
     },
     {
       option: 'hash',
       alias: 'H',
       type: 'String',
-      default: tozan.DEFAULT_SHA,
-      enum: tozan.ALLOWED_SHA,
+      default: constants.DEFAULT_SHA,
+      enum: constants.ALLOWED_SHA,
       description: 'SHA hashing bit depth'
     },
     {
