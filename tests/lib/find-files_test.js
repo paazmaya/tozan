@@ -50,3 +50,10 @@ tape('findFiles - finds files under sub folder', (test) => {
   const list = findFiles(__dirname, options);
   test.equal(list.length, 5);
 });
+
+tape('findFiles::canAccessFile - cannot access file', (test) => {
+  test.plan(1);
+
+  const output = findFiles._canAccessFile('non existing thing');
+  test.notOk(output);
+});

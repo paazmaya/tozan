@@ -82,6 +82,10 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v3.2.0` (2019-07-)
+  - Inform user via `console.log()` about the database table column name migration when it is done
+  - Code refactoring for better test coverage
+  - Better handling of filenames that contain special characters, such as `$`
 * `v3.1.0` (2019-05-29)
   - TypeScript types added
   - Dependencies up to date once again, now using `renovate` to help in that
