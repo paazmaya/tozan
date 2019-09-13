@@ -21,11 +21,14 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - npm install
 
-test_script:
+before_test:
   - node --version
   - npm --version
-  - npm run lint
+  - openssl version
   - openssl list -digest-algorithms
+
+test_script:
+  - npm run lint
   - npm test
 
 build: off

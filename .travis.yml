@@ -5,9 +5,13 @@ dist: trusty
 language: node_js
 node_js:
   - "10"
+before_script:
+  - node --version
+  - npm --version
+  - openssl version
+  - openssl list -digest-algorithms
 script:
   - npm run lint
-  - openssl list -digest-algorithms
   - npm test
 after_script: "npm run coverage"
 cache:

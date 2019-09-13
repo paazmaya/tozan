@@ -39,6 +39,10 @@ The existence of OpenSSL can be checked with the command `openssl version`, whic
 LibreSSL 2.6.5
 ```
 
+In case the installed OpenSSL does not support any of the SHA hash digest algorithms, it should be updated.
+The supported digest algorithms can be seen with the command `openssl list -digest-algorithms`.
+
+
 ## Command line options
 
 Easiest way to see the supported options, is to execute with help output:
