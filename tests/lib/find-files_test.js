@@ -9,6 +9,8 @@
 
 'use strict';
 
+const path = require('path');
+
 const tape = require('tape');
 
 const findFiles = require('../../lib/find-files');
@@ -26,7 +28,7 @@ tape('findFiles - finds all test files', (test) => {
   const options = {
     ignoreDotFiles: true
   };
-  const list = findFiles('tests/fixtures', options);
+  const list = findFiles(path.join('tests', 'fixtures'), options);
   test.equal(list.length, 2);
   test.ok(list.indexOf('tests/fixtures/$data.exp') !== -1);
 });
@@ -37,7 +39,7 @@ tape('findFiles - finds all test files and a dot file', (test) => {
   const options = {
     ignoreDotFiles: false
   };
-  const list = findFiles('tests/fixtures', options);
+  const list = findFiles(path.join('tests', 'fixtures'), options);
   test.equal(list.length, 3);
 });
 

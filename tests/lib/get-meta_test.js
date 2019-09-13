@@ -9,6 +9,8 @@
 
 'use strict';
 
+const path = require('path');
+
 const tape = require('tape');
 
 const constants = require('../../lib/constants');
@@ -24,7 +26,7 @@ tape('getMeta - interface', (test) => {
 tape('getMeta - expected metadata default', (test) => {
   test.plan(3);
 
-  const filepath = 'tests/fixtures/.dot-file';
+  const filepath = path.join('tests', 'fixtures', '.dot-file');
   const meta = getMeta(filepath, constants.DEFAULT_SHA);
 
   test.equal(meta.filepath, filepath);

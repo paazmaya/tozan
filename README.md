@@ -10,7 +10,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![Dependencies Status](https://david-dm.org/paazmaya/tozan/status.svg)](https://david-dm.org/paazmaya/tozan)
 
-Go trough files under the given directory, generate SHA-256 (default), SHA-384, or SHA-512 has out of their content, and store the hash to a SQLite database.
+Go trough the files under a given directory, generate a SHA-256 (default), SHA-384, or SHA-512 hash out of their contents, and store the hash to a SQLite database.
 In case the given file was already listed in the database, its entry will be updated.
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `8.11.1`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
@@ -29,14 +29,14 @@ Install via `npm`, as a global command line utility:
 
 Please note that while in Linux and with `sudo`, some of the dependencies might fail to install,
 which can be fixed in some case by `sudo npm install --global --unsafe-perm image-duplicate-remover`.
-See more details at [docs.npmjs.com](https://docs.npmjs.com/misc/config#unsafe-perm).
+See more details about the `unsafe-perm` option at [docs.npmjs.com](https://docs.npmjs.com/misc/config#unsafe-perm).
 
-The `sha` hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
+The SHA hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
 
 The existence of OpenSSL can be checked with the command `openssl version`, which should output something similar to (example in macOS):
 
 ```sh
-LibreSSL 2.6.4
+LibreSSL 2.6.5
 ```
 
 ## Command line options
@@ -82,7 +82,7 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
-* `v3.2.0` (2019-07-)
+* `v3.2.0` (2019-09-13)
   - Inform user via `console.log()` about the database table column name migration when it is done
   - Code refactoring for better test coverage
   - Better handling of filenames that contain special characters, such as `$`
