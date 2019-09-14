@@ -127,7 +127,7 @@ Please make sure it is over 90% at all times.
 ## Version history
 
 * `v4.0.0` (2019-09-14)
-  - For greated control, and possible performance benefits, user can now define the hashing algorithm #49
+  - For greater control, and possible performance benefits, user can now define the hashing algorithm #49
   - *Breaking change* due to the default hashing algorithm beign now SHA1 for better compatibility with older OpenSSL installations
 * `v3.2.0` (2019-09-13)
   - Inform user via `console.log()` about the database table column name migration when it is done
