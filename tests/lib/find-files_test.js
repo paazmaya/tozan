@@ -30,7 +30,7 @@ tape('findFiles - finds all test files', (test) => {
   };
   const list = findFiles(path.join('tests', 'fixtures'), options);
   test.equal(list.length, 2);
-  test.ok(list.indexOf('tests/fixtures/$data.exp') !== -1);
+  test.ok(list.indexOf(path.join('tests', 'fixtures', '$data.exp')) !== -1);
 });
 
 tape('findFiles - finds all test files and a dot file', (test) => {
