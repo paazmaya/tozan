@@ -50,7 +50,7 @@ tape('findFiles - finds files under sub folder', (test) => {
     ignoreDotFiles: false
   };
   const list = findFiles(__dirname, options);
-  test.equal(list.length, 5);
+  test.equal(list.length, 6);
 });
 
 tape('findFiles::canAccessFile - cannot access file', (test) => {
