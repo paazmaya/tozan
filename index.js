@@ -42,17 +42,14 @@ const unique = (list) => {
  * @returns {string|boolean} Version or false
  */
 const openSSLVersion = (command) => {
-  let version;
   try {
-    version = execSync(command, constants.EXEC_OPTIONS);
+    return execSync(command, constants.EXEC_OPTIONS);
   }
   catch (error) {
     console.error('Looks like "openssl" is not available, hence cannot continue.');
 
     return false;
   }
-
-  return version;
 };
 
 /**
@@ -61,7 +58,7 @@ const openSSLVersion = (command) => {
  * @param {string} directory  Root directory in which images should be
  * @param {object} options    Options that are all boolean values and false by default
  * @param {string} options.database Possible database file to be used with SQLite
- * @param {string} options.hash SHA bit depth to use
+ * @param {string} options.algorithm Hash algorithm to use
  * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
  * @returns {boolean} Processed or not
@@ -73,11 +70,7 @@ module.exports = function tozan(directory, options) {
     return false;
   }
 
-  if (constants.ALLOWED_SHA.indexOf(options.hash) === -1) {
-    return false;
-  }
-
-  console.log(`Using "${version.trim()}" for SHA-${options.hash} hashing`);
+  console.log(`Using "${version.trim()}" for ${options.hash} hashing`);
 
   const files = unique(findFiles(directory, options));
   processFiles(files, options);

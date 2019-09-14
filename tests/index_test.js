@@ -21,16 +21,6 @@ tape('a function with two parameters is exported', (test) => {
   test.equal(tozan.length, 2, 'has two parameters');
 });
 
-tape('index - wrong hash option blocks usage', (test) => {
-  test.plan(1);
-
-  const output = tozan('.', {
-    hash: 128
-  });
-
-  test.notOk(output);
-});
-
 tape('unique - interface', (test) => {
   test.plan(2);
 

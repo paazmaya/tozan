@@ -25,7 +25,7 @@ before_test:
   - node --version
   - npm --version
   - openssl version
-  - openssl list -digest-algorithms
+  - openssl list-message-digest-algorithm
 
 test_script:
   - npm run lint

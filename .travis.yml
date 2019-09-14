@@ -9,7 +9,7 @@ before_script:
   - node --version
   - npm --version
   - openssl version
-  - openssl list -digest-algorithms
+  - openssl list-message-digest-algorithm
 script:
   - npm run lint
   - npm test

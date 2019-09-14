@@ -10,7 +10,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![Dependencies Status](https://david-dm.org/paazmaya/tozan/status.svg)](https://david-dm.org/paazmaya/tozan)
 
-Go trough the files under a given directory, generate a SHA-256 (default), SHA-384, or SHA-512 hash out of their contents, and store the hash to a SQLite database.
+Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
 In case the given file was already listed in the database, its entry will be updated.
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `8.11.1`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
@@ -39,9 +39,9 @@ The existence of OpenSSL can be checked with the command `openssl version`, whic
 LibreSSL 2.6.5
 ```
 
-In case the installed OpenSSL does not support any of the SHA hash digest algorithms, it should be updated.
+In case the installed OpenSSL does not support the default hashing algorithm (SHA-256),
+the hash algorithm need to be defined via command line options.
 The supported digest algorithms can be seen with the command `openssl list -digest-algorithms`.
-
 
 ## Command line options
 
@@ -59,14 +59,54 @@ tozan [options] <directory>
   -h, --help              Help and usage instructions
   -V, --version           Version number
   -D, --database String   SQLite database to use - default: :memory:
-  -H, --hash String       SHA hashing bit depth - either: 256, 384, or 512 -
-                          default: 256
+  -H, --hash String       Hashing algorithm understood by OpenSSL - default: sha1
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
-Version 3.0.0
+Version 4.0.0
 ```
 
 For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/JoshuaWise/better-sqlite3/wiki/API#new-databasepath-options).
+
+## Using programmatically
+
+First install as a dependency:
+
+```sh
+npm install --save tozan
+```
+
+Use in a Node.js script:
+
+```js
+const tozan = require('tozan');
+
+tozan('directory-for-scanning', {
+  ignoreDotFiles: true, // Ignore files and directories that begin with a dot
+  algorithm: 'sha512' // Hash algorithm to use
+  database: 'tozan-meta.sqlite' // Possible database file to be used with SQLite
+});
+```
+
+Clearest example of the usage is in [the command line interface](./bin/tozan.js).
+
+## Speed comparison between hashing algorithms
+
+These numbers are from running `time node bin/tozan.js --hash [algorithm] node_modules` with different algorithms.
+At the time the `node_modules` folder contained total of 11410 files.
+
+Algorithm     | Time
+--------------|------------
+`md4`         | 1m 11.409s
+`md5`         | 1m 16.059s
+`sha1`        | 1m 13.361s
+`sha256`      | 1m 12.263s
+`sha384`      | 1m 15.404s
+`sha512`      | 1m 11.746s
+`streebog512` | 1m 11.888s
+`whirlpool`   | 1m 8.089s
+
+Looks like the differences are not that big. Feel free to add and update the comparison with
+more data and more alternatives.
 
 ## Contributing
 
@@ -86,6 +126,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v4.0.0` (2019-09-14)
+  - For greated control, and possible performance benefits, user can now define the hashing algorithm #49
+  - *Breaking change* due to the default hashing algorithm beign now SHA1 for better compatibility with older OpenSSL installations
 * `v3.2.0` (2019-09-13)
   - Inform user via `console.log()` about the database table column name migration when it is done
   - Code refactoring for better test coverage

@@ -60,9 +60,8 @@ const optsParser = optionator({
       option: 'hash',
       alias: 'H',
       type: 'String',
-      default: constants.DEFAULT_SHA,
-      enum: constants.ALLOWED_SHA,
-      description: 'SHA hashing bit depth'
+      default: constants.DEFAULT_ALG,
+      description: 'Hashing algorithm understood by OpenSSL'
     },
     {
       option: 'ignore-dot-files',
@@ -115,7 +114,7 @@ tozan(directory, {
   ignoreDotFiles: typeof opts.ignoreDotFiles === 'boolean' ?
     opts.ignoreDotFiles :
     false,
-  hash: typeof opts.hash === 'string' ?
+  algorithm: typeof opts.hash === 'string' ?
     opts.hash :
     null,
   database: typeof opts.database === 'string' ?
