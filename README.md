@@ -9,6 +9,7 @@
 [![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![Dependencies Status](https://david-dm.org/paazmaya/tozan/status.svg)](https://david-dm.org/paazmaya/tozan)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/paazmaya/tozan.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/paazmaya/tozan/alerts/)
 
 Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
 In case the given file was already listed in the database, its entry will be updated.
