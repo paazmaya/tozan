@@ -46,8 +46,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "~5.4.0",
-    "optionator": "~0.8.2",
+    "better-sqlite3": "~5.4.3",
+    "optionator": "~0.8.3",
     "progress": "~2.0.3"
   },
   "devDependencies": {
