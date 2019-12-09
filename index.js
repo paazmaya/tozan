@@ -70,7 +70,7 @@ module.exports = function tozan(directory, options) {
     return false;
   }
 
-  console.log(`Using "${version.trim()}" for ${options.hash} hashing`);
+  console.log(`Using "${version.trim()}" for ${options.algorithm} hashing`);
 
   const files = unique(findFiles(directory, options));
   processFiles(files, options);

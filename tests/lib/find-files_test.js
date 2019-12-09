@@ -29,7 +29,7 @@ tape('findFiles - finds all test files', (test) => {
     ignoreDotFiles: true
   };
   const list = findFiles(path.join('tests', 'fixtures'), options);
-  test.equal(list.length, 2);
+  test.equal(list.length, 3);
   test.ok(list.indexOf(path.join('tests', 'fixtures', '$data.exp')) !== -1);
 });
 
@@ -40,7 +40,7 @@ tape('findFiles - finds all test files and a dot file', (test) => {
     ignoreDotFiles: false
   };
   const list = findFiles(path.join('tests', 'fixtures'), options);
-  test.equal(list.length, 3);
+  test.equal(list.length, 4);
 });
 
 tape('findFiles - finds files under sub folder', (test) => {

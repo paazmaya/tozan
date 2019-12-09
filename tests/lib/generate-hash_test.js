@@ -58,3 +58,21 @@ tape('generateHash - non supported hash algorithm returns false', (test) => {
 
   test.notOk(hash);
 });
+
+tape('generateHash - difficult file name needs escaping $', (test) => {
+  test.plan(1);
+
+  const filepath = 'tests/fixtures/$data.exp';
+  const hash = generateHash(filepath, 'md5');
+
+  test.equal(hash, '1129a081e4cea80bfe8962f6db80bfa1');
+});
+
+tape('generateHash - difficult file name needs escaping, single quote', (test) => {
+  test.plan(1);
+
+  const filepath = "tests/fixtures/let's go.not"; // eslint-disable-line quotes
+  const hash = generateHash(filepath, 'md5');
+
+  test.equal(hash, '6e2aee8eaaf41d473adf69b85bf462cd');
+});

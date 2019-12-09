@@ -1,6 +1,6 @@
 {
   "name": "tozan",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "main": "index.js",

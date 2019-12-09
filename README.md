@@ -127,6 +127,10 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v4.0.1` (2019-12-09)
+  - Hashing algorithm was shown as `undefined` when used via command line, but was still functional
+  - Updated dependencies :tophat:
+  - Still had issues with escaping special file names and made it better...
 * `v4.0.0` (2019-09-14)
   - For greater control, and possible performance benefits, user can now define the hashing algorithm #49
   - *Breaking change* due to the default hashing algorithm beign now SHA1 for better compatibility with older OpenSSL installations
