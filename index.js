@@ -55,7 +55,7 @@ module.exports = function tozan(directory, options) {
     return false;
   }
 
-  console.log(`Using "${version.trim()}" for ${options.algorithm} hashing`);
+  console.log(`Using "${version.trim()}" for ${options.algorithm} hashing in "${directory}"`);
 
   const files = arrayUniq(findFiles(directory, options));
   processFiles(files, options);

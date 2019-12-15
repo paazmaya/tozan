@@ -102,8 +102,8 @@ if (opts._.length !== 1) {
   process.exit(1);
 }
 
-if (opts.checkIntegrity && opts.database === constants.DEFAULT_ALG) {
-  console.error('Checking integrity was requested but without database file');
+if (opts.checkIntegrity && opts.database === constants.DEFAULT_DATABASE) {
+  console.error('There needs to be a database specified when checking integrity');
   process.exit(1);
 }
 
