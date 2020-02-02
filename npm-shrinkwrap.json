@@ -197,6 +197,12 @@
       "integrity": "sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==",
       "dev": true
     },
+    "@types/node": {
+      "version": "13.5.1",
+      "resolved": "https://nexus.code.tools.cloud.finnair.com/nexus/repository/npm/@types/node/-/node-13.5.1.tgz",
+      "integrity": "sha512-Jj2W7VWQ2uM83f8Ls5ON9adxN98MvyJsMSASYFuSvrov8RMRY64Ayay7KV35ph1TSGIJ2gG9ZVDdEq3c3zaydA==",
+      "dev": true
+    },
     "acorn": {
       "version": "7.1.0",
       "resolved": "https://registry.npmjs.org/acorn/-/acorn-7.1.0.tgz",

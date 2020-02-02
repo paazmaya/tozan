@@ -7,8 +7,6 @@
  * Licensed under the MIT license
  */
 
-export = tozan;
-
 declare namespace tozan {
   export interface TozanOptions {
     database?: string | false;
@@ -17,4 +15,6 @@ declare namespace tozan {
   }
 }
 
-declare function tozan(directory: string, options?: tozan.TozanOptions): void;
+declare function tozan(directory: string, options?: tozan.TozanOptions): boolean;
+
+export = tozan;
