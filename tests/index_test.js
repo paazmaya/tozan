@@ -7,12 +7,10 @@
  * Licensed under the MIT license
  */
 
-'use strict';
-
 const tape = require('tape');
+
 const tozan = require('../index');
 const constants = require('../lib/constants');
-
 
 tape('a function with two parameters is exported', (test) => {
   test.plan(2);

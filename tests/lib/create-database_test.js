@@ -7,7 +7,7 @@
  * Licensed under the MIT license
  */
 
-'use strict';
+
 
 const tape = require('tape');
 const Better3 = require('better-sqlite3');
