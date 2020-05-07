@@ -7,11 +7,10 @@
  * Licensed under the MIT license
  */
 
-
-
 const tape = require('tape');
 const Better3 = require('better-sqlite3');
 
+const constants = require('../../lib/constants');
 const createDatabase = require('../../lib/create-database');
 
 tape('createDatabase - interface', (test) => {
@@ -31,9 +30,7 @@ tape('createDatabase - uses memory by default', (test) => {
 tape('createDatabase::migrateDatabase - updates legacy table', (test) => {
   test.plan(3);
 
-  const db = new Better3('memories', {
-    memory: true
-  });
+  const db = new Better3(constants.DEFAULT_DATABASE);
   db.exec(`
     CREATE TABLE IF NOT EXISTS files (
       filepath TEXT PRIMARY KEY ON CONFLICT REPLACE,
