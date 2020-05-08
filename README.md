@@ -133,7 +133,7 @@ Please make sure it is over 90% at all times.
   - Still had issues with escaping special file names and made it better...
 * `v4.0.0` (2019-09-14)
   - For greater control, and possible performance benefits, user can now define the hashing algorithm #49
-  - *Breaking change* due to the default hashing algorithm beign now SHA1 for better compatibility with older OpenSSL installations
+  - *Breaking change* due to the default hashing algorithm being now SHA1 for better compatibility with older OpenSSL installations
 * `v3.2.0` (2019-09-13)
   - Inform user via `console.log()` about the database table column name migration when it is done
   - Code refactoring for better test coverage
