@@ -7,8 +7,6 @@
  * Licensed under the MIT license
  */
 
-
-
 const path = require('path');
 
 const tape = require('tape');

@@ -10,6 +10,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![Dependencies Status](https://david-dm.org/paazmaya/tozan/status.svg)](https://david-dm.org/paazmaya/tozan)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/paazmaya/tozan.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/paazmaya/tozan/alerts/)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_tozan&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_tozan)
 
 Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
 In case the given file was already listed in the database, its entry will be updated.
@@ -29,7 +30,7 @@ Install via `npm`, as a global command line utility:
 ```
 
 Please note that while in Linux and with `sudo`, some of the dependencies might fail to install,
-which can be fixed in some case by `sudo npm install --global --unsafe-perm image-duplicate-remover`.
+which can be fixed in some case by `sudo npm install --global --unsafe-perm tozan`.
 See more details about the `unsafe-perm` option at [docs.npmjs.com](https://docs.npmjs.com/misc/config#unsafe-perm).
 
 The SHA hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
@@ -37,7 +38,7 @@ The SHA hash is calculated with [OpenSSL](https://www.openssl.org/), specificall
 The existence of OpenSSL can be checked with the command `openssl version`, which should output something similar to (example in macOS):
 
 ```sh
-LibreSSL 2.6.5
+LibreSSL 2.8.3
 ```
 
 In case the installed OpenSSL does not support the default hashing algorithm (SHA-256),

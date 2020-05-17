@@ -7,8 +7,6 @@
  * Licensed under the MIT license
  */
 
-
-
 const tape = require('tape');
 
 const processFiles = require('../../lib/process-files');
