@@ -51,7 +51,7 @@
     "progress": "~2.0.3"
   },
   "devDependencies": {
-    "@types/node": "13.13.8",
+    "@types/node": "13.13.9",
     "codecov": "3.7.0",
     "eslint": "7.0.0",
     "eslint-config-paazmaya": "7.0.0",
