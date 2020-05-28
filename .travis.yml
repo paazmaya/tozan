@@ -1,6 +1,8 @@
 # https://docs.travis-ci.com/user/trusty-ci-environment/
 
-sudo: false
+# https://docs.travis-ci.com/user/build-config-validation/
+version: ~> 1.0
+
 dist: trusty
 language: node_js
 node_js:
@@ -18,5 +20,5 @@ after_script: "npm run coverage"
 cache:
   directories:
     - node_modules
-matrix:
+jobs:
   fast_finish: true
