@@ -128,6 +128,7 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+  - Run tests also against Node.js version 14. Now versions 10 (Travis), 12 (AppVeyor), and 14 (Travis) of Node.js are covered
 * `v4.0.1` (2019-12-09)
   - Hashing algorithm was shown as `undefined` when used via command line, but was still functional
   - Updated dependencies :tophat:
