@@ -11,28 +11,12 @@ const {
   execSync
 } = require('child_process');
 
+const arrayUniq = require('array-uniq');
+
 const constants = require('./lib/constants');
 
 const findFiles = require('./lib/find-files');
 const processFiles = require('./lib/process-files');
-
-/**
- * Get rid of duplicates in the list.
- *
- * @param {array} list List of things to get only unique ones
- * @returns {array} Unique items in the list
- */
-const unique = (list) => {
-  const filtered = [];
-
-  list.forEach((item) => {
-    if (filtered.indexOf(item) === -1) {
-      filtered.push(item);
-    }
-  });
-
-  return filtered;
-};
 
 /**
  * What is the version of OpenSSL binary?
@@ -72,12 +56,11 @@ module.exports = function tozan(directory, options) {
 
   console.log(`Using "${version.trim()}" for ${options.algorithm} hashing`);
 
-  const files = unique(findFiles(directory, options));
+  const files = arrayUniq(findFiles(directory, options));
   processFiles(files, options);
 
   return true;
 };
 
 // For unit testing only.
-module.exports._unique = unique;
 module.exports._openSSLVersion = openSSLVersion;
