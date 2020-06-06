@@ -118,3 +118,15 @@ tape('cli executes when directory exists', (test) => {
   });
 
 });
+
+tape('cli complains when checking integrity is requested without database', (test) => {
+  test.plan(2);
+
+  execFile('node', [pkg.bin, '--check-integrity', __dirname], null, (error, stdout, stderr) => {
+    if (error) {
+      test.pass('Expected to exit with non zero value');
+    }
+    test.ok(stderr.indexOf('There needs to be a database specified when checking integrity') !== -1);
+  });
+
+});

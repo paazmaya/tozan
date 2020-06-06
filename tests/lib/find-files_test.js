@@ -57,3 +57,12 @@ tape('findFiles::canAccessFile - cannot access file', (test) => {
   const output = findFiles._canAccessFile('non existing thing');
   test.notOk(output);
 });
+
+tape('findFiles::findFilterFiles - finds all test files', (test) => {
+  test.plan(2);
+
+  const ignoreDotFiles = true;
+  const list = findFiles._findFilterFiles(path.join('tests', 'fixtures'), ignoreDotFiles);
+  test.equal(list.length, 3);
+  test.ok(list.indexOf(path.join('tests', 'fixtures', '$data.exp')) !== -1);
+});

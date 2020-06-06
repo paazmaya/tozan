@@ -44,8 +44,7 @@ const optsParser = optionator({
       option: 'version',
       alias: 'V',
       type: 'Boolean',
-      description: 'Version number',
-      example: '-V'
+      description: 'Version number'
     },
     {
       option: 'database',
@@ -53,6 +52,12 @@ const optsParser = optionator({
       type: 'String',
       default: constants.DEFAULT_DATABASE,
       description: 'SQLite database to use'
+    },
+    {
+      option: 'check-integrity',
+      alias: 'C',
+      type: 'Boolean',
+      description: 'Use database to check integrity of the files'
     },
     {
       option: 'hash',
@@ -97,6 +102,11 @@ if (opts._.length !== 1) {
   process.exit(1);
 }
 
+if (opts.checkIntegrity && opts.database === constants.DEFAULT_DATABASE) {
+  console.error('There needs to be a database specified when checking integrity');
+  process.exit(1);
+}
+
 const directory = path.resolve(opts._[0]);
 
 try {
@@ -115,6 +125,9 @@ tozan(directory, {
   algorithm: typeof opts.hash === 'string' ?
     opts.hash :
     null,
+  checkIntegrity: typeof opts.checkIntegrity === 'boolean' ?
+    opts.checkIntegrity :
+    false,
   database: typeof opts.database === 'string' ?
     opts.database :
     null

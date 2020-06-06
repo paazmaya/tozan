@@ -43,6 +43,7 @@ const openSSLVersion = (command) => {
  * @param {object} options    Options that are all boolean values and false by default
  * @param {string} options.database Possible database file to be used with SQLite
  * @param {string} options.algorithm Hash algorithm to use
+ * @param {boolean} options.checkIntegrity Use database to check integrity of the files
  * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
  *
  * @returns {boolean} Processed or not
@@ -54,7 +55,7 @@ module.exports = function tozan(directory, options) {
     return false;
   }
 
-  console.log(`Using "${version.trim()}" for ${options.algorithm} hashing`);
+  console.log(`Using "${version.trim()}" for ${options.algorithm} hashing in "${directory}"`);
 
   const files = arrayUniq(findFiles(directory, options));
   processFiles(files, options);

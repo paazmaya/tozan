@@ -61,6 +61,7 @@ tozan [options] <directory>
   -h, --help              Help and usage instructions
   -V, --version           Version number
   -D, --database String   SQLite database to use - default: :memory:
+  -C, --check-integrity   Use database to check integrity of the files
   -H, --hash String       Hashing algorithm understood by OpenSSL - default: sha1
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
@@ -128,6 +129,8 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v5.1.0` (2019-10-)
+  - Use existing database for validating files, available via `--check-integrity` command line option #54
 * `v5.0.0` (2020-06-03)
   - Run tests also against Node.js version 14. Now versions 10 (Travis), 12 (AppVeyor), and 14 (CircleCI) of Node.js are covered
   - Minimum Node.js version lifted from `8.11.1` to `10.13.0`
