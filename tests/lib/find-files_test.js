@@ -48,12 +48,5 @@ tape('findFiles - finds files under sub folder', (test) => {
     ignoreDotFiles: false
   };
   const list = findFiles(__dirname, options);
-  test.equal(list.length, 6);
-});
-
-tape('findFiles::canAccessFile - cannot access file', (test) => {
-  test.plan(1);
-
-  const output = findFiles._canAccessFile('non existing thing');
-  test.notOk(output);
+  test.equal(list.length, 7);
 });
