@@ -16,4 +16,6 @@ export const DEFAULT_ALG: "sha1";
 export const ITERATION_SIZE: 100;
 export const DEFAULT_DATABASE: ":memory:";
 export const CREATE_TABLE: "\n  CREATE TABLE IF NOT EXISTS files (\n    filepath TEXT PRIMARY KEY ON CONFLICT REPLACE,\n    hash TEXT,\n    filesize INTEGER,\n    modified INTEGER\n  ) WITHOUT ROWID\n";
+export const ALTER_TABLE: 'ALTER TABLE files RENAME COLUMN sha256 TO hash';
+
 export const INSERT_DATA: string;

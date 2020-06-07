@@ -8,7 +8,7 @@
  */
 
 export = createDatabase;
-declare function createDatabase(location: string): any;
+declare function createDatabase(location: string, structure:string): any;
 declare namespace createDatabase {
     export { migrateDatabase as _migrateDatabase };
 }

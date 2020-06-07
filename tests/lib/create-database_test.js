@@ -17,7 +17,7 @@ tape('createDatabase - interface', (test) => {
   test.plan(2);
 
   test.equal(typeof createDatabase, 'function', 'is a function');
-  test.equal(createDatabase.length, 1);
+  test.equal(createDatabase.length, 2);
 });
 
 tape('createDatabase - uses memory by default', (test) => {
