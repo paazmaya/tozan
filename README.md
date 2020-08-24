@@ -128,6 +128,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v5.1.1` (2020-08-24)
+  - More utility methods in separate files for reuse elsewhere
+  - `npm audit fix` and other security issue fixes on dependencies
 * `v5.1.0` (2020-06-07)
   - Allow to specify table creation SQL phrase when used programmatically, see `lib/create-database.js` for `createDatabase()` methods second argument
 * `v5.0.0` (2020-06-03)

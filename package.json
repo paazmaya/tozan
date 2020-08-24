@@ -1,6 +1,6 @@
 {
   "name": "tozan",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "main": "index.js",
@@ -46,10 +46,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "array-uniq": "~2.1.0",
-    "better-sqlite3": "~7.1.0",
-    "optionator": "~0.9.1",
-    "progress": "~2.0.3"
+    "array-uniq": "2.1.0",
+    "better-sqlite3": "7.1.0",
+    "optionator": "0.9.1",
+    "progress": "2.0.3"
   },
   "devDependencies": {
     "@types/node": "14.6.0",
