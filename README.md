@@ -128,6 +128,9 @@ Please make sure it is over 90% at all times.
 
 ## Version history
 
+* `v5.1.2` (2021-02-16)
+  - Start using GitHub Actions, since Travis has now stricter limitations on usage
+  - Update Node.js version to 15 (and later to 16 when possible) at Circle CI
 * `v5.1.1` (2020-08-24)
   - More utility methods in separate files for reuse elsewhere
   - `npm audit fix` and other security issue fixes on dependencies
