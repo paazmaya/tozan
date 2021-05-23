@@ -5,6 +5,9 @@ It follows the guidance from https://keepachangelog.com/en/1.0.0/.
 
 ## Unreleased
 
+## `v5.1.3` (2021-05-23)
+- Update dependencies to keep them up to date
+
 ## `v5.1.2` (2021-02-16)
 - Start using GitHub Actions, since Travis has now stricter limitations on usage
 - Update Node.js version to 15 (and later to 16 when possible) at Circle CI
