@@ -9,7 +9,7 @@
       "version": "5.1.3",
       "license": "MIT",
       "dependencies": {
-        "array-uniq": "2.1.0",
+        "array-uniq": "3.0.0",
         "better-sqlite3": "7.4.5",
         "optionator": "0.9.1",
         "progress": "2.0.3"
@@ -595,11 +595,14 @@
       }
     },
     "node_modules/array-uniq": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/array-uniq/-/array-uniq-2.1.0.tgz",
-      "integrity": "sha512-bdHxtev7FN6+MXI1YFW0Q8mQ8dTJc2S8AMfju+ZR77pbg2yAdVyDlwkaUI7Har0LyOMRFPHrJ9lYdyjZZswdlQ==",
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/array-uniq/-/array-uniq-3.0.0.tgz",
+      "integrity": "sha512-T/3qyw9JTDHjj+aIo4uQyHCAoG1DkFqFViq0e6uPzkXwT74MEPsmQ30rxx8x9+yjBQ3KJ2bXOb2bBKC1FwEjdw==",
       "engines": {
-        "node": ">=6"
+        "node": ">=12"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
       }
     },
     "node_modules/available-typed-arrays": {
@@ -4556,9 +4559,9 @@
       "dev": true
     },
     "array-uniq": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/array-uniq/-/array-uniq-2.1.0.tgz",
-      "integrity": "sha512-bdHxtev7FN6+MXI1YFW0Q8mQ8dTJc2S8AMfju+ZR77pbg2yAdVyDlwkaUI7Har0LyOMRFPHrJ9lYdyjZZswdlQ=="
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/array-uniq/-/array-uniq-3.0.0.tgz",
+      "integrity": "sha512-T/3qyw9JTDHjj+aIo4uQyHCAoG1DkFqFViq0e6uPzkXwT74MEPsmQ30rxx8x9+yjBQ3KJ2bXOb2bBKC1FwEjdw=="
     },
     "available-typed-arrays": {
       "version": "1.0.4",
