@@ -7,11 +7,11 @@
  * Licensed under the MIT license
  */
 
-const tape = require('tape');
-const Better3 = require('better-sqlite3');
+import tape from 'tape';
+import Better3 from 'better-sqlite3';
 
-const constants = require('../../lib/constants');
-const createDatabase = require('../../lib/create-database');
+import constants from '../../lib/constants.js';
+import createDatabase, {migrateDatabase} from '../../lib/create-database.js';
 
 tape('createDatabase - interface', (test) => {
   test.plan(2);
@@ -40,7 +40,7 @@ tape('createDatabase::migrateDatabase - updates legacy table', (test) => {
     ) WITHOUT ROWID
   `);
 
-  const output = createDatabase._migrateDatabase(db);
+  const output = migrateDatabase(db);
   test.ok(output, 'Database table was migrated according to method');
 
   const info = db.pragma('table_info(files)');

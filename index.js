@@ -7,25 +7,26 @@
  * Licensed under the MIT license
  */
 
-const {
+import {
   execSync
-} = require('child_process');
+} from 'child_process';
 
-const arrayUniq = require('array-uniq');
+import arrayUniq from 'array-uniq';
 
-const constants = require('./lib/constants');
+import constants from './lib/constants.js';
 
-const findFiles = require('./lib/find-files');
-const processFiles = require('./lib/process-files');
+import findFiles from './lib/find-files.js';
+import processFiles from './lib/process-files.js';
 
 /**
  * What is the version of OpenSSL binary?
- * Used for checking its existance.
+ * Used for checking its existence.
+ * Exposed for unit testing only.
  *
  * @param {string} command Command for checking version
  * @returns {string|boolean} Version or false
  */
-const openSSLVersion = (command) => {
+export const openSSLVersion = (command) => {
   try {
     return execSync(command, constants.EXEC_OPTIONS);
   }
@@ -47,7 +48,7 @@ const openSSLVersion = (command) => {
  *
  * @returns {boolean} Processed or not
  */
-module.exports = function tozan(directory, options) {
+export default function tozan(directory, options) {
 
   const version = openSSLVersion(constants.OPENSSL_VERSION);
   if (!version) {
@@ -60,7 +61,4 @@ module.exports = function tozan(directory, options) {
   processFiles(files, options);
 
   return true;
-};
-
-// For unit testing only.
-module.exports._openSSLVersion = openSSLVersion;
+}

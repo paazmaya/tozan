@@ -7,13 +7,15 @@
  * Licensed under the MIT license
  */
 
-const fs = require('fs'),
-  path = require('path'),
-  {
-    execFile
-  } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import {execFile} from 'child_process';
+import { fileURLToPath } from 'url';
 
-const tape = require('tape');
+import tape from 'tape';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));
 

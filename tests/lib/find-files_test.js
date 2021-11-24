@@ -7,11 +7,16 @@
  * Licensed under the MIT license
  */
 
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const tape = require('tape');
+import tape from 'tape';
 
-const findFiles = require('../../lib/find-files');
+import findFiles from '../../lib/find-files.js';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 tape('findFiles - interface', (test) => {
   test.plan(2);

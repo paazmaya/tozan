@@ -7,9 +7,9 @@
  * Licensed under the MIT license
  */
 
-const tape = require('tape');
+import tape from 'tape';
 
-const canAccessFile = require('../../lib/can-access-file');
+import canAccessFile from '../../lib/can-access-file.js';
 
 tape('canAccessFile - interface', (test) => {
   test.plan(2);
