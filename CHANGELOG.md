@@ -4,7 +4,11 @@ This changelog covers the version history and possible upcoming changes.
 It follows the guidance from https://keepachangelog.com/en/1.0.0/.
 
 ## Unreleased
-- Minimum supported Node.js version lifted from `10.13.0` to `14.15.0`
+
+## `v6.0.0` (2021-11-24)
+
+- Converted to EcmaScript Modules from CommonJS, as in `import` instead of `require`
+- Minimum supported Node.js version lifted from `10.13.0` to `16.13.0`
 - Stop using Travis CI for testing, as there are three others also in use (Appveyor, CircleCI, and GitHub Actions)
 
 ## `v5.1.3` (2021-05-23)

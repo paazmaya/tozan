@@ -13,7 +13,7 @@
 Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
 In case the given file was already listed in the database, its entry will be updated.
 
-Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `14.15.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `16.13.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
 
 ## Background for the name
 
@@ -62,7 +62,7 @@ tozan [options] <directory>
   -H, --hash String       Hashing algorithm understood by OpenSSL - default: sha1
   -i, --ignore-dot-files  Ignore files and directories that begin with a dot
 
-Version 4.0.0
+Version 6.0.0
 ```
 
 For more information on the possible database file options, [see `sqlite3` documentation for the `filename` parameter](https://github.com/JoshuaWise/better-sqlite3/wiki/API#new-databasepath-options).
