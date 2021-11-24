@@ -78,7 +78,7 @@ npm install --save tozan
 Use in a Node.js script:
 
 ```js
-const tozan = require('tozan');
+import tozan from 'tozan';
 
 tozan('directory-for-scanning', {
   ignoreDotFiles: true, // Ignore files and directories that begin with a dot
