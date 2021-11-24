@@ -55,24 +55,6 @@ tape('cli should output help when requested', (test) => {
 
 });
 
-tape('cli should complain when package.json is gone', (test) => {
-  test.plan(2);
-
-  const nameFrom = 'package.json',
-    nameTo = '_package.json';
-
-  fs.renameSync(nameFrom, nameTo);
-
-  execFile('node', [pkg.bin, '-h'], null, (error, stdout, stderr) => {
-    if (error) {
-      test.pass('Expected to exit with non zero value');
-    }
-    test.ok(stderr.trim().indexOf('Could not read') !== -1, 'Complaint seen');
-    fs.renameSync(nameTo, nameFrom);
-  });
-
-});
-
 tape('cli should complain when non existing option used', (test) => {
   test.plan(2);
 

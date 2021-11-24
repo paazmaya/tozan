@@ -9,8 +9,8 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint": "eslint index.js bin lib",
-    "test": "nyc --all --exclude tests tape tests/*_test.js tests/lib/*_test.js",
-    "coverage": "nyc --all --exclude tests report --reporter=text-lcov > coverage.lcov && codecov"
+    "test": "c8 --all --exclude tests --exclude types tape tests/*_test.js tests/lib/*_test.js",
+    "coverage": "c8 --all --exclude tests --exclude types report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": {
     "name": "Juga Paazmaya",
@@ -54,11 +54,11 @@
   },
   "devDependencies": {
     "@types/node": "16.11.10",
+    "c8": "7.10.0",
     "codecov": "3.8.3",
     "eslint": "8.3.0",
     "eslint-config-paazmaya": "7.2.0",
     "eslint-plugin-node": "11.1.0",
-    "nyc": "15.1.0",
     "tape": "5.3.2"
   }
 }
