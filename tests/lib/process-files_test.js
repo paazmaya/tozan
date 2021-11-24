@@ -7,9 +7,9 @@
  * Licensed under the MIT license
  */
 
-const tape = require('tape');
+import tape from 'tape';
 
-const processFiles = require('../../lib/process-files');
+import processFiles from '../../lib/process-files.js';
 
 tape('processFiles - interface', (test) => {
   test.plan(2);

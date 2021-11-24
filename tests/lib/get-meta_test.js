@@ -7,12 +7,12 @@
  * Licensed under the MIT license
  */
 
-const path = require('path');
+import path from 'path';
 
-const tape = require('tape');
+import tape from 'tape';
 
-const constants = require('../../lib/constants');
-const getMeta = require('../../lib/get-meta');
+import constants from '../../lib/constants.js';
+import getMeta from '../../lib/get-meta.js';
 
 tape('getMeta - interface', (test) => {
   test.plan(2);

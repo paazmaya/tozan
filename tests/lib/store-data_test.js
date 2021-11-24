@@ -7,9 +7,9 @@
  * Licensed under the MIT license
  */
 
-const tape = require('tape');
+import tape from 'tape';
 
-const storeData = require('../../lib/store-data');
+import storeData from '../../lib/store-data.js';
 
 tape('storeData - interface', (test) => {
   test.plan(2);

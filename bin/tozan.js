@@ -9,18 +9,18 @@
  * Licensed under the MIT license
  */
 
-const fs = require('fs'),
-  path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const optionator = require('optionator');
+import optionator from 'optionator';
 
-const tozan = require('../index');
-const constants = require('../lib/constants');
+import tozan from '../index.js';
+import constants from '../lib/constants.js';
 
 let pkg;
 
 try {
-  const packageJson = fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8');
+  const packageJson = fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8');
 
   pkg = JSON.parse(packageJson);
 }

@@ -7,12 +7,12 @@
  * Licensed under the MIT license
  */
 
-const path = require('path');
+import path from 'path';
 
-const tape = require('tape');
+import tape from 'tape';
 
-const constants = require('../../lib/constants');
-const generateHash = require('../../lib/generate-hash');
+import constants from '../../lib/constants.js';
+import generateHash from '../../lib/generate-hash.js';
 
 tape('generateHash - interface', (test) => {
   test.plan(2);
