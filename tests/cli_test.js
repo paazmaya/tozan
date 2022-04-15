@@ -9,8 +9,12 @@
 
 import fs from 'fs';
 import path from 'path';
-import {execFile} from 'child_process';
-import { fileURLToPath } from 'url';
+import {
+  execFile
+} from 'child_process';
+import {
+  fileURLToPath
+} from 'url';
 
 import tape from 'tape';
 

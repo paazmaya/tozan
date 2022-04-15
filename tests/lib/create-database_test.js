@@ -11,7 +11,9 @@ import tape from 'tape';
 import Better3 from 'better-sqlite3';
 
 import constants from '../../lib/constants.js';
-import createDatabase, {migrateDatabase} from '../../lib/create-database.js';
+import createDatabase, {
+  migrateDatabase
+} from '../../lib/create-database.js';
 
 tape('createDatabase - interface', (test) => {
   test.plan(2);

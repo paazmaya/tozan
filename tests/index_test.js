@@ -9,7 +9,9 @@
 
 import tape from 'tape';
 
-import tozan, {openSSLVersion} from '../index.js';
+import tozan, {
+  openSSLVersion
+} from '../index.js';
 import constants from '../lib/constants.js';
 
 tape('a function with two parameters is exported', (test) => {

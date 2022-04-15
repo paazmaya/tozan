@@ -8,7 +8,9 @@
  */
 
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {
+  fileURLToPath
+} from 'url';
 
 import tape from 'tape';
 
