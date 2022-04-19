@@ -4,6 +4,7 @@
 
 [![Windows build status](https://ci.appveyor.com/api/projects/status/bd4af4tkql7usxwq/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/master)
 [![CircleCI](https://circleci.com/gh/paazmaya/tozan.svg?style=svg)](https://circleci.com/gh/paazmaya/tozan)
+[![Node.js v16 CI](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml)
 [![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 
