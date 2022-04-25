@@ -18,7 +18,7 @@
         "tozan": "bin/tozan.js"
       },
       "devDependencies": {
-        "@types/node": "16.11.28",
+        "@types/node": "16.11.29",
         "c8": "7.11.2",
         "codecov": "3.8.3",
         "eslint": "8.14.0",
@@ -145,9 +145,9 @@
       "dev": true
     },
     "node_modules/@types/node": {
-      "version": "16.11.28",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-16.11.28.tgz",
-      "integrity": "sha512-l/y1ZZpWqevemVQmk0Q1TPohlJTul7u9ysq3bw6xlRDO8z+98JBI6gp4JS0OK8YkWUdYxnJU35H4vOzuiOFIag==",
+      "version": "16.11.29",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-16.11.29.tgz",
+      "integrity": "sha512-9dDdonLyPJQJ/kdOlDxAah+bTI+u2ccF3k62FErhquDuggoCX6piWez7j7o6yNE+rP2IRcZVQ6Tw4N0P38+rWA==",
       "dev": true
     },
     "node_modules/acorn": {
@@ -3248,9 +3248,9 @@
       "dev": true
     },
     "@types/node": {
-      "version": "16.11.28",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-16.11.28.tgz",
-      "integrity": "sha512-l/y1ZZpWqevemVQmk0Q1TPohlJTul7u9ysq3bw6xlRDO8z+98JBI6gp4JS0OK8YkWUdYxnJU35H4vOzuiOFIag==",
+      "version": "16.11.29",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-16.11.29.tgz",
+      "integrity": "sha512-9dDdonLyPJQJ/kdOlDxAah+bTI+u2ccF3k62FErhquDuggoCX6piWez7j7o6yNE+rP2IRcZVQ6Tw4N0P38+rWA==",
       "dev": true
     },
     "acorn": {
