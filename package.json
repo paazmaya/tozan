@@ -59,6 +59,6 @@
     "eslint": "8.22.0",
     "eslint-config-paazmaya": "8.0.0",
     "eslint-plugin-node": "11.1.0",
-    "tape": "5.5.3"
+    "tape": "5.6.0"
   }
 }
