@@ -56,7 +56,7 @@
     "@types/node": "16.11.68",
     "c8": "7.12.0",
     "codecov": "3.8.3",
-    "eslint": "8.25.0",
+    "eslint": "8.26.0",
     "eslint-config-paazmaya": "8.0.0",
     "eslint-plugin-node": "11.1.0",
     "tape": "5.6.1"
