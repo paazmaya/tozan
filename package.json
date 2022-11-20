@@ -8,7 +8,7 @@
   "bin": "bin/tozan.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "eslint index.js bin lib",
+    "lint": "eslint *.js bin lib",
     "test": "c8 --all --exclude tests --exclude types tape tests/*_test.js tests/lib/*_test.js",
     "coverage": "c8 --all --exclude tests --exclude types report --reporter=text-lcov > coverage.lcov && codecov"
   },
@@ -57,7 +57,7 @@
     "c8": "7.12.0",
     "codecov": "3.8.3",
     "eslint": "8.28.0",
-    "eslint-config-paazmaya": "8.0.0",
+    "eslint-config-paazmaya": "9.0.0",
     "eslint-plugin-node": "11.1.0",
     "tape": "5.6.1"
   }
