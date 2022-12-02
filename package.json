@@ -9,8 +9,8 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint": "eslint *.js bin lib",
-    "test": "c8 --all --exclude tests --exclude types tape tests/*_test.js tests/lib/*_test.js",
-    "coverage": "c8 --all --exclude tests --exclude types report --reporter=text-lcov > coverage.lcov && codecov"
+    "test": "c8 --exclude tests --exclude types tape tests/*_test.js tests/lib/*_test.js",
+    "coverage": "c8 --exclude tests --exclude types report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": {
     "name": "Juga Paazmaya",
