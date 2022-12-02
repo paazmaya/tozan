@@ -21,7 +21,7 @@ import tape from 'tape';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));
+import pkg from '../package.json' assert { type: 'json' };
 
 tape('cli should output version number', (test) => {
   test.plan(1);
