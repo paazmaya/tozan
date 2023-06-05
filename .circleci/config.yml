@@ -6,7 +6,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:16.13
+      - image: cimg/node:20.2
 
     working_directory: ~/repo
 
@@ -16,16 +16,16 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v16-dependencies-{{ checksum "package.json" }}
+          - v20-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v16-dependencies-
+          - v20-dependencies-
 
       - run: npm install
 
       - save_cache:
           paths:
             - node_modules
-          key: v16-dependencies-{{ checksum "package.json" }}
+          key: v20-dependencies-{{ checksum "package.json" }}
 
       - run: npm run lint
       - run: npm test
