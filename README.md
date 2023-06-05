@@ -8,7 +8,6 @@
 [![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![DeepSource](https://deepsource.io/gh/paazmaya/tozan.svg/?label=active+issues&show_trend=true&token=5S_Ijf0eG_jzMUpAb3Dwn7CU)](https://deepsource.io/gh/paazmaya/tozan/?ref=repository-badge)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/paazmaya/tozan.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/paazmaya/tozan/alerts/)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_tozan&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_tozan)
 
 Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
