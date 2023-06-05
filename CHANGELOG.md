@@ -5,6 +5,12 @@ It follows the guidance from https://keepachangelog.com/en/1.0.0/.
 
 ## Unreleased
 
+## `v6.1.0` (2023-06-05)
+
+- Start testing against Node.js v18
+- Update dependencies, most notably [major version of `better-sqlite3`](https://github.com/WiseLibs/better-sqlite3/releases/tag/v8.0.0)
+- Testing with [Deepsource](https://app.deepsource.com/gh/paazmaya/tozan/)
+
 ## `v6.0.0` (2021-11-24)
 
 - Converted to EcmaScript Modules from CommonJS, as in `import` instead of `require`
