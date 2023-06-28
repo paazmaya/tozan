@@ -5,6 +5,10 @@ It follows the guidance from https://keepachangelog.com/en/1.0.0/.
 
 ## Unreleased
 
+## `v7.0.1` (2023-06-28)
+
+- Another try with wildcard exports
+
 ## `v7.0.0` (2023-06-28)
 
 - Minimum supported Node.js version lifted from `16.13.0` to `18.12.0`

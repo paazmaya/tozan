@@ -1,11 +1,11 @@
 {
   "name": "tozan",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "exports": {
     ".": "./index.js",
-    "./lib": "./lib/"
+    "./lib/*.js": "./lib/*.js"
   },
   "type": "module",
   "bin": "bin/tozan.js",
