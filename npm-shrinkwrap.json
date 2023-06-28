@@ -24,11 +24,12 @@
         "eslint": "8.43.0",
         "eslint-config-paazmaya": "9.0.1",
         "eslint-plugin-node": "11.1.0",
-        "tape": "5.6.3"
+        "tape": "5.6.3",
+        "typescript": "^5.1.5"
       },
       "engines": {
-        "node": ">=16.13.0",
-        "npm": ">=8.1.0"
+        "node": ">=18.12.0",
+        "npm": ">=8.19.2"
       }
     },
     "node_modules/@aashutoshrathi/word-wrap": {
@@ -3228,6 +3229,19 @@
         "url": "https://github.com/sponsors/ljharb"
       }
     },
+    "node_modules/typescript": {
+      "version": "5.1.5",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.1.5.tgz",
+      "integrity": "sha512-FOH+WN/DQjUvN6WgW+c4Ml3yi0PH+a/8q+kNIfRehv1wLhWONedw85iu+vQ39Wp49IzTJEsZ2lyLXpBF7mkF1g==",
+      "dev": true,
+      "bin": {
+        "tsc": "bin/tsc",
+        "tsserver": "bin/tsserver"
+      },
+      "engines": {
+        "node": ">=14.17"
+      }
+    },
     "node_modules/unbox-primitive": {
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/unbox-primitive/-/unbox-primitive-1.0.2.tgz",
@@ -5833,6 +5847,12 @@
         "for-each": "^0.3.3",
         "is-typed-array": "^1.1.9"
       }
+    },
+    "typescript": {
+      "version": "5.1.5",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.1.5.tgz",
+      "integrity": "sha512-FOH+WN/DQjUvN6WgW+c4Ml3yi0PH+a/8q+kNIfRehv1wLhWONedw85iu+vQ39Wp49IzTJEsZ2lyLXpBF7mkF1g==",
+      "dev": true
     },
     "unbox-primitive": {
       "version": "1.0.2",

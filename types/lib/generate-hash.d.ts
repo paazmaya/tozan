@@ -1,11 +1,9 @@
+export default generateHash;
 /**
- * tozan
- * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database
+ * Get the meta data for the given file.
  *
- * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
- * Licensed under the MIT license
+ * @param {string} filepath  File path
+ * @param {string} algorithm Hash algorithm to use
+ * @returns {string|boolean} Generated hash of the given file or false when failed
  */
-
-export = generateHash;
 declare function generateHash(filepath: string, algorithm: string): string | boolean;

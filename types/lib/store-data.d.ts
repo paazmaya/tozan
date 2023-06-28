@@ -1,11 +1,9 @@
+export default storeData;
 /**
- * tozan
- * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database
+ * Generate and store the metadata for all the files in the list
  *
- * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
- * Licensed under the MIT license
+ * @param {array} list List of file meta data objects
+ * @param {sqlite3.Database} db Database instance
+ * @returns {sqlite3.Database|boolean} Database instance or false
  */
-
-export = storeData;
-declare function storeData(list: any[], db: any): any;
+declare function storeData(list: array, db: sqlite3.Database): sqlite3.Database | boolean;

@@ -1,14 +1,13 @@
+export default processFiles;
 /**
- * tozan
- * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database
+ * @param {array} files List of file paths
+ * @param {object} options Options that are all boolean values and false by default
+ * @param {string} options.database Possible database file to be used with SQLite
+ * @param {string} options.algorithm Hash algorithm to use
  *
- * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
- * Licensed under the MIT license
+ * @returns {void}
  */
-
-export = processFiles;
-declare function processFiles(files: any[], options: {
+declare function processFiles(files: array, options: {
     database: string;
     algorithm: string;
 }): void;

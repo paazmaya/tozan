@@ -1,17 +1,13 @@
+export default findFiles;
 /**
- * tozan
- * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database
+ * List all files under the given directory.
  *
- * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
- * Licensed under the MIT license
+ * @param {string} directory  Root directory in which images should be
+ * @param {object} options    Options that are all boolean values and false by default
+ * @param {boolean} options.ignoreDotFiles Ignore files and directories that begin with a dot
+ *
+ * @returns {Array} List of files
  */
-
-export = findFiles;
 declare function findFiles(directory: string, options: {
     ignoreDotFiles: boolean;
 }): any[];
-declare namespace findFiles {
-    export { canAccessFile as _canAccessFile };
-}
-declare function canAccessFile(item: string): boolean;

@@ -1,15 +1,11 @@
+export function migrateDatabase(db: sqlite3.Database): boolean;
+export default createDatabase;
 /**
- * tozan
- * https://github.com/paazmaya/tozan
- * Index filesystem by creating metadata database
+ * Create and initialise SQLite database and tables, which by default is in memory.
  *
- * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
- * Licensed under the MIT license
+ * @param {string} location Where shall the database be stored, defauts to ':memory:'
+ * @param {string} structure Table structure as in CREATE TABLE
+ * @returns {sqlite3.Database} Database instance
+ * @see http://sqlite.org/lang_createtable.html
  */
-
-export = createDatabase;
-declare function createDatabase(location: string, structure:string): any;
-declare namespace createDatabase {
-    export { migrateDatabase as _migrateDatabase };
-}
-declare function migrateDatabase(db: any): boolean;
+declare function createDatabase(location: string, structure: string): sqlite3.Database;
