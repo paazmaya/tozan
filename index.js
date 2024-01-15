@@ -9,7 +9,7 @@
 
 import {
   execSync
-} from 'child_process';
+} from 'node:child_process';
 
 import arrayUniq from 'array-uniq';
 
