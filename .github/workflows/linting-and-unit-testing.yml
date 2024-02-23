@@ -16,3 +16,6 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm test
+    - name: Frogbot by JFrog
+      uses: jfrog/frogbot@v2.19.10
+            
