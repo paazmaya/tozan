@@ -18,4 +18,7 @@ jobs:
     - run: npm test
     - name: Frogbot by JFrog
       uses: jfrog/frogbot@v2.19.10
-            
+      env:
+        JF_URL: ${{ secrets.JF_URL }}
+        JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+        JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
