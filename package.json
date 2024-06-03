@@ -53,7 +53,7 @@
   "dependencies": {
     "array-uniq": "3.0.0",
     "better-sqlite3": "9.6.0",
-    "optionator": "0.9.3",
+    "optionator": "0.9.4",
     "progress": "2.0.3"
   },
   "devDependencies": {
