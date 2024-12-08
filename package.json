@@ -8,7 +8,9 @@
     "./lib/*.js": "./lib/*.js"
   },
   "type": "module",
-  "bin": "bin/tozan.js",
+  "bin": {
+    "tozan": "bin/tozan.js"
+  },
   "types": "types/index.d.ts",
   "scripts": {
     "lint": "eslint *.js bin lib",
@@ -44,7 +46,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:paazmaya/tozan.git"
+    "url": "git+ssh://git@github.com/paazmaya/tozan.git"
   },
   "bugs": {
     "url": "https://github.com/paazmaya/tozan/issues"
