@@ -21,12 +21,14 @@ import tape from 'tape';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import pkg from '../package.json' assert { type: 'json' };
+/* import pkg from '../package.json' assert { type: 'json' };*/
+const packageFile = new URL('../package.json', import.meta.url);
+const pkg = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
 
 tape('cli should output version number', (test) => {
   test.plan(1);
 
-  execFile('node', [pkg.bin, '-V'], null, (error, stdout) => {
+  execFile('node', [pkg.bin[pkg.name], '-V'], null, (error, stdout) => {
     if (error) {
       test.fail(error);
     }
@@ -38,7 +40,7 @@ tape('cli should output version number', (test) => {
 tape('cli should output help by default', (test) => {
   test.plan(2);
 
-  execFile('node', [pkg.bin], null, (error, stdout) => {
+  execFile('node', [pkg.bin[pkg.name]], null, (error, stdout) => {
     if (error) {
       test.pass('Expected to exit with non zero value');
     }
@@ -50,7 +52,7 @@ tape('cli should output help by default', (test) => {
 tape('cli should output help when requested', (test) => {
   test.plan(1);
 
-  execFile('node', [pkg.bin, '--help'], null, (error, stdout) => {
+  execFile('node', [pkg.bin[pkg.name], '--help'], null, (error, stdout) => {
     if (error) {
       test.fail(error);
     }
@@ -62,7 +64,7 @@ tape('cli should output help when requested', (test) => {
 tape('cli should complain when non existing option used', (test) => {
   test.plan(2);
 
-  execFile('node', [pkg.bin, '-g'], null, (error, stdout, stderr) => {
+  execFile('node', [pkg.bin[pkg.name], '-g'], null, (error, stdout, stderr) => {
     if (error) {
       test.pass('Expected to exit with non zero value');
     }
@@ -74,7 +76,7 @@ tape('cli should complain when non existing option used', (test) => {
 tape('cli should require at least one directory', (test) => {
   test.plan(2);
 
-  execFile('node', [pkg.bin], null, (error, stdout, stderr) => {
+  execFile('node', [pkg.bin[pkg.name]], null, (error, stdout, stderr) => {
     if (error) {
       test.pass('Expected to exit with non zero value');
     }
@@ -86,7 +88,7 @@ tape('cli should require at least one directory', (test) => {
 tape('cli realises that directory does not exist', (test) => {
   test.plan(2);
 
-  execFile('node', [pkg.bin, 'not-here'], null, (error, stdout, stderr) => {
+  execFile('node', [pkg.bin[pkg.name], 'not-here'], null, (error, stdout, stderr) => {
     if (error) {
       test.pass('Expected to exit with non zero value');
     }
@@ -98,7 +100,7 @@ tape('cli realises that directory does not exist', (test) => {
 tape('cli executes when directory exists', (test) => {
   test.plan(1);
 
-  execFile('node', [pkg.bin, __dirname], null, (error, stdout) => {
+  execFile('node', [pkg.bin[pkg.name], __dirname], null, (error, stdout) => {
     if (error) {
       test.fail(error);
     }
