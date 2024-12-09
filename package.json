@@ -59,7 +59,7 @@
     "progress": "2.0.3"
   },
   "devDependencies": {
-    "@types/node": "20.17.9",
+    "@types/node": "22.10.1",
     "c8": "10.1.2",
     "codecov": "3.8.3",
     "eslint": "8.57.1",
