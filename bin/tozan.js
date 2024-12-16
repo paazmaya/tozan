@@ -102,7 +102,7 @@ const directory = path.resolve(opts._[0]);
 try {
   fs.accessSync(directory);
 }
-catch (error) {
+catch {
   console.error(`Directory "${directory}" does not exist`);
   process.exit(1);
 }
