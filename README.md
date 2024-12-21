@@ -15,9 +15,11 @@ In case the given file was already listed in the database, its entry will be upd
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `22.11.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
 
-## Background for the name
+## Background for the project name
 
 The name of the project (Tozan, 当山) is for honouring the legacy of a certain master from the Ryukyu archipelago, Japan, who contributed to the martial arts that we today know as **karate** and **ryukyu kobujutsu**.
+
+[Read more about why these martial arts are important for me at `karatejukka.fi`.](https://karatejukka.fi)
 
 ## Installation
 
