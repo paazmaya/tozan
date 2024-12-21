@@ -3,9 +3,10 @@
 This changelog covers the version history and possible upcoming changes.
 It follows the guidance from https://keepachangelog.com/en/1.0.0/.
 
-## Unreleased
+## `v8.0.0` (2024-12-21)
 
 - Minimum supported Node.js version lifted from `18.12.0` to `22.11.0`
+- Most notable dependency, `better-sqlite3` has been upgraded from `8.4.0` to `11.7.0` 
 
 ## `v7.0.1` (2023-06-28)
 

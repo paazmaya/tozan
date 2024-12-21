@@ -1,6 +1,6 @@
 {
   "name": "tozan",
-  "version": "7.0.1",
+  "version": "8.0.0",
   "description": "Index filesystem by creating metadata database",
   "homepage": "https://github.com/paazmaya/tozan",
   "exports": {

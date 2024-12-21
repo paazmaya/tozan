@@ -1,12 +1,12 @@
 {
   "name": "tozan",
-  "version": "7.0.1",
+  "version": "8.0.0",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "tozan",
-      "version": "7.0.1",
+      "version": "8.0.0",
       "license": "MIT",
       "dependencies": {
         "array-uniq": "3.0.0",
