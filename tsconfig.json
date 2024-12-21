@@ -18,7 +18,7 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-      "lib/*.js",
-      "index.js"
+    "lib/*.js",
+    "index.js"
   ]
 }
