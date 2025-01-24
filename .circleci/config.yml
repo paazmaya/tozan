@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # https://circleci.com/developer/images/image/cimg/node
-      - image: cimg/node:22.13.0
+      - image: cimg/node:22.13.1
 
     working_directory: ~/repo
 
