@@ -30,3 +30,11 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: coverage.lcov
+
+    - name: Upload code coverage to DeepSource
+      # https://docs.deepsource.com/docs/languages/javascript
+      run: |
+        curl https://deepsource.io/cli | sh
+        ./bin/deepsource report --analyzer test-coverage --key javascript --value-file ./coverage.lcov
+      env:
+        DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
