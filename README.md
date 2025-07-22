@@ -4,7 +4,7 @@
 
 [![Windows build status](https://ci.appveyor.com/api/projects/status/bd4af4tkql7usxwq/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/master)
 [![CircleCI](https://circleci.com/gh/paazmaya/tozan.svg?style=svg)](https://circleci.com/gh/paazmaya/tozan)
-[![Node.js v22 CI](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml)
+[![Node.js CI](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml)
 [![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![DeepSource](https://deepsource.io/gh/paazmaya/tozan.svg/?label=active+issues&show_trend=true&token=5S_Ijf0eG_jzMUpAb3Dwn7CU)](https://deepsource.io/gh/paazmaya/tozan/?ref=repository-badge)
@@ -14,7 +14,7 @@
 Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
 In case the given file was already listed in the database, its entry will be updated.
 
-Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `22.11.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `24.12.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
 
 ## Background for the project name
 
