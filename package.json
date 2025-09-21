@@ -59,11 +59,11 @@
     "progress": "2.0.3"
   },
   "devDependencies": {
-    "@types/node": "24.3.1",
+    "@types/node": "24.5.2",
     "c8": "10.1.3",
-    "eslint": "9.35.0",
+    "eslint": "9.36.0",
     "eslint-config-paazmaya": "9.0.1",
-    "eslint-plugin-n": "17.21.3",
+    "eslint-plugin-n": "17.23.1",
     "tape": "5.9.0",
     "typescript": "5.9.2"
   }

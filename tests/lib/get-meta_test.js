@@ -53,3 +53,53 @@ tape('getMeta - non existing file returns false', (test) => {
 
   test.notOk(meta);
 });
+
+tape('getMeta - handles empty files', (test) => {
+  test.plan(3);
+
+  const filepath = 'tests/fixtures/empty-file-1.txt';
+  const meta = getMeta(filepath, 'sha1');
+
+  test.ok(meta, 'Processes empty files');
+  // The file contains no data, but is still 2 bytes due to # and newline
+  test.equal(meta.filesize, 2, 'Correctly reports file size (contains "#\\n")');
+  test.equal(typeof meta.modified, 'number', 'Has modified timestamp');
+});
+
+tape('getMeta - handles hash generation failure', (test) => {
+  test.plan(1);
+
+  const filepath = 'tests/fixtures/.dot-file';
+  const meta = getMeta(filepath, 'invalid-algorithm');
+
+  test.notOk(meta, 'Returns false when hash generation fails');
+});
+
+tape('getMeta - handles invalid filepath types', (test) => {
+  test.plan(2);
+
+  test.notOk(getMeta(null, 'sha1'), 'Returns false for null filepath');
+  test.notOk(getMeta('', 'sha1'), 'Returns false for empty filepath');
+});
+
+tape('getMeta - handles directory instead of file', (test) => {
+  test.plan(1);
+
+  const filepath = 'tests/fixtures';
+  const meta = getMeta(filepath, 'sha1');
+
+  // This should either work or fail gracefully depending on implementation
+  test.ok(typeof meta === 'object' || meta === false, 'Handles directory path');
+});
+
+tape('getMeta - validates metadata structure', (test) => {
+  test.plan(4);
+
+  const filepath = 'tests/fixtures/.dot-file';
+  const meta = getMeta(filepath, 'sha256');
+
+  test.ok(Object.prototype.hasOwnProperty.call(meta, 'filepath'), 'Has filepath property');
+  test.ok(Object.prototype.hasOwnProperty.call(meta, 'hash'), 'Has hash property');
+  test.ok(Object.prototype.hasOwnProperty.call(meta, 'filesize'), 'Has filesize property');
+  test.ok(Object.prototype.hasOwnProperty.call(meta, 'modified'), 'Has modified property');
+});

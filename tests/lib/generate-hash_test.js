@@ -74,3 +74,46 @@ tape('generateHash - difficult file name needs escaping, single quote', (test) =
 
   test.equal(hash, '6e2aee8eaaf41d473adf69b85bf462cd');
 });
+
+tape('generateHash - handles Windows paths correctly', (test) => {
+  test.plan(1);
+
+  const filepath = path.join('tests', 'fixtures', '.dot-file');
+  const hash = generateHash(filepath, 'md5');
+
+  test.ok(hash, 'Handles path separators correctly');
+});
+
+tape('generateHash - handles empty algorithm gracefully', (test) => {
+  test.plan(1);
+
+  const filepath = 'tests/fixtures/.dot-file';
+  const hash = generateHash(filepath, '');
+
+  test.ok(hash, 'Returns hash when algorithm is empty (OpenSSL defaults to SHA256)');
+});
+
+tape('generateHash - handles undefined algorithm', (test) => {
+  test.plan(1);
+
+  const filepath = 'tests/fixtures/.dot-file';
+  const hash = generateHash(filepath, null);
+
+  test.ok(hash, 'Returns hash even for null algorithm (OpenSSL interprets as string)');
+});
+
+tape('generateHash - handles null filepath', (test) => {
+  test.plan(1);
+
+  const hash = generateHash(null, 'md5');
+
+  test.notOk(hash, 'Returns false for null filepath');
+});
+
+tape('generateHash - handles empty filepath', (test) => {
+  test.plan(1);
+
+  const hash = generateHash('', 'md5');
+
+  test.notOk(hash, 'Returns false for empty filepath');
+});

@@ -53,3 +53,35 @@ tape('createDatabase::migrateDatabase - updates legacy table', (test) => {
   test.notOk(isLegacy, 'Legacy column name not found');
   test.ok(isModern, 'Migrated column name found');
 });
+
+tape('createDatabase - creates file database when path provided', (test) => {
+  test.plan(1);
+
+  const dbPath = './test-database.db';
+  const db = createDatabase(dbPath);
+
+  test.ok(db, 'Creates file-based database');
+  db.close();
+});
+
+tape('createDatabase - handles different options', (test) => {
+  test.plan(2);
+
+  const db1 = createDatabase();
+  test.ok(db1.memory, 'Creates memory database by default');
+  db1.close();
+
+  const db2 = createDatabase(constants.DEFAULT_DATABASE);
+  test.ok(db2.memory, 'Creates memory database when explicitly set');
+  db2.close();
+});
+
+tape('createDatabase - creates table structure', (test) => {
+  test.plan(1);
+
+  const db = createDatabase();
+  const info = db.pragma('table_info(files)');
+
+  test.ok(info.length > 0, 'Table structure created');
+  db.close();
+});

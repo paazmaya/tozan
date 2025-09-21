@@ -17,3 +17,28 @@ tape('processFiles - interface', (test) => {
   test.equal(typeof processFiles, 'function', 'is a function');
   test.equal(processFiles.length, 2);
 });
+
+tape('processFiles - handles empty file list', (test) => {
+  test.plan(1);
+
+  const files = [];
+  const options = {
+    database: ':memory:',
+    algorithm: 'sha1'
+  };
+
+  test.doesNotThrow(() => {
+    processFiles(files, options);
+  }, 'Handles empty file list gracefully');
+});
+
+tape('processFiles - handles invalid options', (test) => {
+  test.plan(1);
+
+  const files = [];
+  const options = null;
+
+  test.throws(() => {
+    processFiles(files, options);
+  }, 'Throws on invalid options');
+});
