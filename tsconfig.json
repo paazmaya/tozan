@@ -15,7 +15,9 @@
     "emitDeclarationOnly": true,
     "outDir": "types",
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   },
   "include": [
     "lib/*.js",
