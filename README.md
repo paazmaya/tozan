@@ -34,7 +34,7 @@ Please note that while in Linux and with `sudo`, some of the dependencies might 
 which can be fixed in some case by `sudo npm install --global --unsafe-perm tozan`.
 See more details about the `unsafe-perm` option at [docs.npmjs.com](https://docs.npmjs.com/misc/config#unsafe-perm).
 
-The SHA hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](https://wiki.openssl.org/index.php/Manual:Dgst(1)) command, hence it needs to be available in the `PATH`.
+The SHA hash is calculated with [OpenSSL](https://www.openssl.org/), specifically with its [`openssl dgst`](<https://wiki.openssl.org/index.php/Manual:Dgst(1)>) command, hence it needs to be available in the `PATH`.
 
 The existence of OpenSSL can be checked with the command `openssl version`, which should output something similar to (example in macOS):
 
@@ -97,16 +97,16 @@ Clearest example of the usage is in [the command line interface](./bin/tozan.js)
 These numbers are from running `time node bin/tozan.js --hash [algorithm] node_modules` with different algorithms.
 At the time the `node_modules` folder contained total of 11410 files.
 
-Algorithm     | Time
---------------|------------
-`md4`         | 1m 11.409s
-`md5`         | 1m 16.059s
-`sha1`        | 1m 13.361s
-`sha256`      | 1m 12.263s
-`sha384`      | 1m 15.404s
-`sha512`      | 1m 11.746s
-`streebog512` | 1m 11.888s
-`whirlpool`   | 1m 8.089s
+| Algorithm     | Time       |
+| ------------- | ---------- |
+| `md4`         | 1m 11.409s |
+| `md5`         | 1m 16.059s |
+| `sha1`        | 1m 13.361s |
+| `sha256`      | 1m 12.263s |
+| `sha384`      | 1m 15.404s |
+| `sha512`      | 1m 11.746s |
+| `streebog512` | 1m 11.888s |
+| `whirlpool`   | 1m 8.089s  |
 
 Looks like the differences are not that big. Feel free to add and update the comparison with
 more data and more alternatives.
