@@ -18,7 +18,7 @@
         "tozan": "bin/tozan.js"
       },
       "devDependencies": {
-        "@types/node": "24.12.0",
+        "@types/node": "24.13.2",
         "c8": "10.1.3",
         "oxlint": "1.62.0",
         "tape": "5.9.0",
@@ -543,13 +543,13 @@
       "dev": true
     },
     "node_modules/@types/node": {
-      "version": "24.12.0",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.12.0.tgz",
-      "integrity": "sha512-GYDxsZi3ChgmckRT9HPU0WEhKLP08ev/Yfcq2AstjrDASOYCSXeyjDsHg4v5t4jOj7cyDX3vmprafKlWIG9MXQ==",
+      "version": "24.13.2",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.13.2.tgz",
+      "integrity": "sha512-fRa09kZTgu8o71KFcDjUFuc7F+dEbZYZmkI0mg5YBTRs0yMKjYHsq/c0urDKeDb+D5qVgXOdFcuu+DZPKOITwA==",
       "dev": true,
       "license": "MIT",
       "dependencies": {
-        "undici-types": "~7.16.0"
+        "undici-types": "~7.18.0"
       }
     },
     "node_modules/ansi-regex": {
@@ -3239,9 +3239,9 @@
       }
     },
     "node_modules/undici-types": {
-      "version": "7.16.0",
-      "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.16.0.tgz",
-      "integrity": "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==",
+      "version": "7.18.2",
+      "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.18.2.tgz",
+      "integrity": "sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==",
       "dev": true,
       "license": "MIT"
     },
@@ -3721,12 +3721,12 @@
       "dev": true
     },
     "@types/node": {
-      "version": "24.12.0",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.12.0.tgz",
-      "integrity": "sha512-GYDxsZi3ChgmckRT9HPU0WEhKLP08ev/Yfcq2AstjrDASOYCSXeyjDsHg4v5t4jOj7cyDX3vmprafKlWIG9MXQ==",
+      "version": "24.13.2",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.13.2.tgz",
+      "integrity": "sha512-fRa09kZTgu8o71KFcDjUFuc7F+dEbZYZmkI0mg5YBTRs0yMKjYHsq/c0urDKeDb+D5qVgXOdFcuu+DZPKOITwA==",
       "dev": true,
       "requires": {
-        "undici-types": "~7.16.0"
+        "undici-types": "~7.18.0"
       }
     },
     "ansi-regex": {
@@ -5554,9 +5554,9 @@
       }
     },
     "undici-types": {
-      "version": "7.16.0",
-      "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.16.0.tgz",
-      "integrity": "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==",
+      "version": "7.18.2",
+      "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.18.2.tgz",
+      "integrity": "sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==",
       "dev": true
     },
     "util-deprecate": {
