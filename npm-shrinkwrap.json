@@ -10,7 +10,7 @@
       "license": "MIT",
       "dependencies": {
         "array-uniq": "3.0.0",
-        "better-sqlite3": "12.8.0",
+        "better-sqlite3": "12.11.1",
         "optionator": "0.9.4",
         "progress": "2.0.3"
       },
@@ -689,9 +689,9 @@
       ]
     },
     "node_modules/better-sqlite3": {
-      "version": "12.8.0",
-      "resolved": "https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.8.0.tgz",
-      "integrity": "sha512-RxD2Vd96sQDjQr20kdP+F+dK/1OUNiVOl200vKBZY8u0vTwysfolF6Hq+3ZK2+h8My9YvZhHsF+RSGZW2VYrPQ==",
+      "version": "12.11.1",
+      "resolved": "https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.11.1.tgz",
+      "integrity": "sha512-dq9AtApgg5PGFtBzPFSBl3HZQjHok5gaQCM6zh2Yk0aSmDCs1CbnVI8/HgASQkNKsWFpseIO9beg5xxpYhbIfA==",
       "hasInstallScript": true,
       "license": "MIT",
       "dependencies": {
@@ -699,7 +699,7 @@
         "prebuild-install": "^7.1.1"
       },
       "engines": {
-        "node": "20.x || 22.x || 23.x || 24.x || 25.x"
+        "node": "20.x || 22.x || 23.x || 24.x || 25.x || 26.x"
       }
     },
     "node_modules/bindings": {
@@ -3809,9 +3809,9 @@
       "integrity": "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA=="
     },
     "better-sqlite3": {
-      "version": "12.8.0",
-      "resolved": "https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.8.0.tgz",
-      "integrity": "sha512-RxD2Vd96sQDjQr20kdP+F+dK/1OUNiVOl200vKBZY8u0vTwysfolF6Hq+3ZK2+h8My9YvZhHsF+RSGZW2VYrPQ==",
+      "version": "12.11.1",
+      "resolved": "https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.11.1.tgz",
+      "integrity": "sha512-dq9AtApgg5PGFtBzPFSBl3HZQjHok5gaQCM6zh2Yk0aSmDCs1CbnVI8/HgASQkNKsWFpseIO9beg5xxpYhbIfA==",
       "requires": {
         "bindings": "^1.5.0",
         "prebuild-install": "^7.1.1"
