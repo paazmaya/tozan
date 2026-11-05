@@ -2,10 +2,10 @@
 
 > Index filesystem by creating metadata database
 
-[![Windows build status](https://ci.appveyor.com/api/projects/status/bd4af4tkql7usxwq/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/master)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/bd4af4tkql7usxwq/branch/main?svg=true)](https://ci.appveyor.com/project/paazmaya/tozan/branch/main)
 [![CircleCI](https://circleci.com/gh/paazmaya/tozan.svg?style=svg)](https://circleci.com/gh/paazmaya/tozan)
 [![Node.js CI](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/tozan/actions/workflows/linting-and-unit-testing.yml)
-[![codecov](https://codecov.io/gh/paazmaya/tozan/branch/master/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
+[![codecov](https://codecov.io/gh/paazmaya/tozan/branch/main/graph/badge.svg)](https://codecov.io/gh/paazmaya/tozan)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![DeepSource](https://deepsource.io/gh/paazmaya/tozan.svg/?label=active+issues&show_trend=true&token=5S_Ijf0eG_jzMUpAb3Dwn7CU)](https://deepsource.io/gh/paazmaya/tozan/?ref=repository-badge)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_tozan&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_tozan)

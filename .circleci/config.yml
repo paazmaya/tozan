@@ -7,6 +7,7 @@ jobs:
   build:
     docker:
       # https://circleci.com/developer/images/image/cimg/node
+      # TODO: Pin Docker image to immutable @sha256 digest
       - image: cimg/node:24.16.0
 
     working_directory: ~/repo
@@ -17,16 +18,15 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v24-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v24-dependencies-
+          - v24-dependencies-{{ checksum "npm-shrinkwrap.json" }}
 
-      - run: npm install
+      - run: npm ci --ignore-scripts
+      - run: npm rebuild --ignore-scripts=false better-sqlite3
 
       - save_cache:
           paths:
             - node_modules
-          key: v24-dependencies-{{ checksum "package.json" }}
+          key: v24-dependencies-{{ checksum "npm-shrinkwrap.json" }}
 
       - run: npm run lint
       - run: npm test
