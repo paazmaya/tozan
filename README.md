@@ -9,7 +9,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaazmaya%2Ftozan?ref=badge_shield)
 [![DeepSource](https://deepsource.io/gh/paazmaya/tozan.svg/?label=active+issues&show_trend=true&token=5S_Ijf0eG_jzMUpAb3Dwn7CU)](https://deepsource.io/gh/paazmaya/tozan/?ref=repository-badge)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_tozan&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_tozan)
-[![OpenSSF Scorecard](htt‌ps://api.securityscorecards.dev/projects/github.com/paazmaya/tozan/badge)](htt‌ps://securityscorecards.dev/viewer/?uri=github.com/paazmaya/tozan)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/paazmaya/tozan/badge)](https://securityscorecards.dev/viewer/?uri=github.com/paazmaya/tozan)
 
 Go trough the files under a given directory, generate a hash of each of the files (which by default is SHA1), and store the hashes to a SQLite database (which by default is in memory).
 In case the given file was already listed in the database, its entry will be updated.
@@ -115,7 +115,7 @@ more data and more alternatives.
 
 First thing to do is to file [an issue](https://github.com/paazmaya/tozan/issues).
 Then possibly open a Pull Request for solving the given issue.
-[ESLint](http://eslint.org/) is used for linting the code, please use it by doing:
+[Oxlint](https://oxc.rs/docs/guide/usage/linter.html) is used for linting the code, please use it by doing:
 
 ```sh
 npm install
@@ -123,7 +123,7 @@ npm run lint
 ```
 
 Unit tests are written with [`tape`](https://github.com/substack/tape) and can be executed with `npm test`.
-Code coverage is inspected with [`nyc`](https://github.com/istanbuljs/nyc) and
+Code coverage is inspected with [`c8`](https://github.com/bcoe/c8) and
 can be executed with `npm run coverage` after running `npm test`.
 Please make sure it is over 90% at all times.
 
