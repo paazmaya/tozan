@@ -8,7 +8,7 @@ jobs:
     docker:
       # https://circleci.com/developer/images/image/cimg/node
       # TODO: Pin Docker image to immutable @sha256 digest
-      - image: cimg/node:24.16.0
+      - image: cimg/node:24.22.2
 
     working_directory: ~/repo
 
